@@ -1,0 +1,71 @@
+
+@font-face
+{
+	font-family: 'Alexana';
+	src: url('../Police/ALexana.ttf');
+}
+
+h1
+{
+	text-align: center;
+
+	color:black;
+
+	margin-top: 1%;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	
+	font-size: 40px;
+	font-family: '', sans serif;
+}
+
+body
+{
+background-color: white;
+
+	height: auto;
+	width: 100%;
+}
+
+
+
+#conteneur
+{
+	margin: 0;
+	width: auto;
+	height: auto;
+}
+
+.Min-Image
+{
+	display: block;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	height: 100%;
+	width: auto;
+}
+
+.Bloc-Texte
+{
+	background-color: rgb(255, 255, 255);
+
+	text-align: center;
+	
+	width: auto;
+	height: auto;
+}
+
+.Bloc-Image
+{
+	display: flex;
+	flex-direction: center;
+
+	background-repeat: no-repeat;
+
+	width: auto;
+	height: 79%;
+
+	filter: blur(1px);
+}
