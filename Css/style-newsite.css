@@ -1,48 +1,46 @@
-body
-{
+body {
     background-color: rgb(18, 20, 58);
     width: 100%;
-    height: auto;
-
-    margin : 0%;
-    padding: 0%;
-}
-
-.form-1
-{
+    height: 75%;
     margin: 0%;
     padding: 0%;
 }
 
-.h1-a
-{
-    color: black;
+label {
+    width: auto;
+    height: auto;
 }
 
-.conteneur-1
-{
-    width: 100%;
+.form-1 {
+    margin: 0%;
+    padding: 0%;
+}
 
+.h1-a {
+    color: black;
+    width: auto;
+    height: auto;
+}
+
+.conteneur-1 {
+    width: 100%;
     margin: 0%;
     margin-top: 5%;
     padding: 0%;
-
     text-align: center;
     align-items: center;
     justify-items: center;
     justify-content: center;
 }
 
-.div-1
-{
+.div-1 {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 89%;
 }
 
-.div-2
-{
+.div-2 {
     padding: 1%;
     margin: auto;
     background-color: rgba(226, 226, 226, 0.568);
@@ -50,29 +48,26 @@ body
     height: auto;
 }
 
-.div-3
-{
+.div-3 {
     border-top: 2px solid black;
     width: 100%;
     height: 50%;
 }
 
-.warning_p
-{
+.warning_p {
     margin: 0%;
     padding: 0%;
 }
 
+
 /* ---------------------------------------------------- AFFICHAGE MIN IMAGE ---------------------------------------------------- */
 
-.affichage-div-image
-{
+.affichage-div-image {
     width: 18%;
     height: auto;
 }
 
-.min-affichage-div-image
-{
+.min-affichage-div-image {
     width: auto;
     height: auto;
     padding: 0%;
@@ -85,15 +80,13 @@ body
     display: flex;
     flex-direction: column;
     position: relative;
-    -webkit-box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
-
+    -webkit-box-shadow: 0px 0px 13px 7px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 13px 7px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 13px 7px rgba(0, 0, 0, 0.75);
     background-color: blueviolet;
 }
 
-.div-image
-{
+.div-image {
     width: auto;
     height: auto;
     padding: 0%;
@@ -103,13 +96,10 @@ body
     margin-right: 0%;
     white-space: nowrap;
     display: table-cell;
-    
     /*border: 2px solid rgb(13, 136, 145);*/
-    
 }
 
-.Min-Image
-{
+.Min-Image {
     background-color: rgb(179, 6, 6);
     max-width: 100%;
     height: auto;
@@ -121,83 +111,71 @@ body
     border-bottom: 0px;
     padding: 0%;
     margin: 0%;
-    display:block;
+    display: block;
     object-fit: cover;
 }
 
-.a-image
-{      
-    color: rgb(255, 255, 255);          /* couleur du texte à ajuster suivant le besoin */
+.a-image {
+    color: rgb(255, 255, 255);
+    /* couleur du texte à ajuster suivant le besoin */
     font-size: 20px;
-
     width: auto;
     max-height: 100%;
-    
     overflow: hidden;
-
     padding-right: auto;
-	padding-left: auto;
-	
-	display: block;
-	display: -webkit-block;
-	
-	/*box-shadow: 0px 5px 10px;*/
-	
-    text-align: left; /* For Edge */
-    -moz-text-align-last: left; /* For Firefox prior 58.0 */
-
+    padding-left: auto;
+    display: block;
+    display: -webkit-block;
+    /*box-shadow: 0px 5px 10px;*/
+    text-align: left;
+    /* For Edge */
+    -moz-text-align-last: left;
+    /* For Firefox prior 58.0 */
     text-align-last: left;
     float: left;
     bottom: 0;
     decoration: none;
-	
-	transition: 0.5s all;
-}
-.a-image:hover
-{
-    color: #eee; 
+    transition: 0.5s all;
 }
 
-.a-image-background
-{
+.a-image:hover {
+    color: #eee;
+}
+
+.a-image-background {
     display: block;
-    position: absolute;   /*positionnement hors flux */
+    position: absolute;
+    /*positionnement hors flux */
     text-overflow: clip;
     width: 100%;
     height: 100%;
-
     /* Required for text-overflow to do anything */
     white-space: nowrap;
     overflow: hidden;
-
     background-position: 100% 100%;
     background-image: url(../media-site/background-image.png);
     z-index: 1;
-    
     backface-visibility: hidden;
-    -webkit-transform: translateZ(0) scale(1,1);
-    transform: translateZ(0) scale(1,1);
+    -webkit-transform: translateZ(0) scale(1, 1);
+    transform: translateZ(0) scale(1, 1);
     -webkit-transition: opacity ease-in-out .25s;
     transition: opacity ease-in-out .25s;
-
     /*
     background: rgb(77, 167, 36);     couleur du fond à ajuster suivant le besoin */
-    transition: all .5s;  /* la transition à appliquer */
+    transition: all .5s;
+    /* la transition à appliquer */
     opacity: 0.5;
 }
 
-.a-image-background:hover
-{
+.a-image-background:hover {
     opacity: 1;
 }
 
-.div-image-span
-{
-    line-height:27vw;
+.div-image-span {
+    line-height: 27vw;
 }
 
-.div-affichage-image-gestion
-{
+.div-affichage-image-gestion {
     width: auto;
     height: auto;
     border: 1px solid rgb(255, 255, 255);
@@ -205,8 +183,7 @@ body
     text-align: center;
 }
 
-.p-div-affichage-image-gestion
-{
+.p-div-affichage-image-gestion {
     display: block;
     font-size: 125%;
     text-decoration: none;
@@ -217,8 +194,8 @@ body
     padding: 0%;
 }
 
-.p-div-affichage-image-gestion:hover
-{
-    transition: all .5s;  /* la transition à appliquer */
+.p-div-affichage-image-gestion:hover {
+    transition: all .5s;
+    /* la transition à appliquer */
     color: blue;
 }

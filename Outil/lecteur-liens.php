@@ -33,10 +33,11 @@
     $controller_upload = $racine_controller."controll-upload.php";
     $controller_newsite = $racine_controller."controll-newsite.php";
 
-//HTML
+//TEMPLATE
     $require_html_header = $racine_template."header.php";
     $require_html_footer = $racine_template."footer.php";
     $require_html_body = $racine_template."body.php";
+    $require_chargement = $racine_template."chargement.html";
    
 //CSS 
     $liens_css_header = $racine_css."style-headers.css";
@@ -46,11 +47,13 @@
     $liens_css_gestion = $racine_css."style-gestion.css";
     $liens_css_menu = $racine_css."style-menu.css";
     $liens_css_newsite = $racine_css."style-newsite.css";
+    $liens_css_chargement = $racine_css."chargement.css";
 
 //JAVASCRIPT
     $script_index = $racine_javascript."script-index.js";
     $scrip_newsite = $racine_javascript."script-newsite.js";
-
+    $scrip_gestion_site = $racine_javascript."script-gestion.js";
+    $scrip_chargement = $racine_javascript."srcipt-chargement.js";;
 /* LIENS DOSSIER */
     
 

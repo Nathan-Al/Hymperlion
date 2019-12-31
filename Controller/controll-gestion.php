@@ -12,14 +12,21 @@
     $nom_site = $_GET["nom_site"];
     $choix = 1;
 
+    $Dossier = array();
+    $Dossier = ScanFichiers($racine_site.$nom_site."/Views");
 
     if(isset($_POST["supp"]))
     if($_POST["name"]!="" && $_POST["name"]!=null)
     {
         $nomPage = nettoyageCharacters($_POST["name"]);
-        
+
         if(SupprimerFichier($dossier,$nomPage))
         echo "Fichier supprimer !";
+    }
+    
+    for ($i=0; $i<sizeof($Dossier); $i++)
+    {
+        $Dossier[$i];
     }
 
     require $require_vue_gestion;

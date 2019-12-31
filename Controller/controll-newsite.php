@@ -4,8 +4,13 @@
     require $outil_lecteur_fichier;
 
     $IcoSite = $IconeSite;
-    $css = $liens_css_header;
-    $titre_page = "Hymperlion - Nouveaux Site";
+    $css = $liens_css_gestion;
+    $cssheader = $liens_css_header;
+    $cssbody = $liens_css_gestion;
+    $cssfooter = $liens_css_foooters;
+    $titre_page = "Hymperlion - Gestion";
+    $nom_site = "Nouveaux Site";
+    $choix = 1;
 
     $website_list = array();
 

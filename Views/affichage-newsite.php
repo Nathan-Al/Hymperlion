@@ -1,10 +1,7 @@
 <html>
-    <?php
-      include_once $require_html_header;
-    ?>
     <link rel="stylesheet" href='<?php echo $liens_css_newsite ?>'><!-- Importations du css -->
     <form method="post" class="form-1" action=<?php echo $controller_newsite ?> enctype="multipart/form-data">
-
+<?php require $require_html_header;   Headers($IconeSite, $cssheader,$titre_page,$nom_site, $choix);?>
         <body>
             <div class="conteneur-1" id="conteneur-1">
                 <div class="div-1">

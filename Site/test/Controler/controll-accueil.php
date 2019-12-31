@@ -1,2 +1,2 @@
 <?php
-require "../Tools/lecteur-liens.php";
+require "./Tools/lecteur-liens.php";

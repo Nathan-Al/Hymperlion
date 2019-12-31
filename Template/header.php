@@ -1,5 +1,5 @@
 <?php
-function Headers($IcoSite, $css, $titre_page, $choix)
+function Headers($IcoSite, $css, $titre_page, $nompage, $choix)
 {
     $def=0;
     $def = $def+$choix;
@@ -18,6 +18,9 @@ function Headers($IcoSite, $css, $titre_page, $choix)
                     <header>
                         <div class="div-header-nom">
                             <a href="../" class="a-headers"><h1> Hymperlion </h1></a>
+                        </div>
+                        <div class="div-header-nom-site">
+                            <h1 class="h1-nomsite"> '.$nompage.' </h1>
                         </div>
                     </header>
     ';
