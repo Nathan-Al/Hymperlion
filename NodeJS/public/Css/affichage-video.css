@@ -1,0 +1,14 @@
+body
+{
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #e1a75b, #c47563, #8c5362, #4d3a4c, #1f1f23);
+}
+
+.video-js
+{
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+}

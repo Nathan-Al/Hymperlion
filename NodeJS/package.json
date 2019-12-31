@@ -1,0 +1,24 @@
+{
+    "name": "cms-test",
+    "version": "0.1.0",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "ejs": "^3.0.1",
+        "express": "^4.17.1",
+        "favicon": "0.0.2",
+        "lodash": "^4.17.15",
+        "markdown": "~0.4",
+        "morgan": "^1.9.1",
+        "nodemon": "^2.0.2",
+        "php": "0.0.1"
+    },
+    "description": "Test",
+    "main": "serveur.js",
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon serveur.js"
+    },
+    "author": "Nath",
+    "license": "ISC"
+}

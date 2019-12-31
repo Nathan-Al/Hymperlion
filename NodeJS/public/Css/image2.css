@@ -1,0 +1,274 @@
+
+header
+{
+    position: -webkit-sticky;
+    position: sticky;
+    
+	top: 0%;
+	
+	background-color: #24445C;
+	
+	width: 100%;
+    height: 10%;
+   
+    border-top: 0px;
+	border-bottom: 2px solid black;
+    box-shadow: 0px 5px 10px;
+    
+    display: flex;
+
+    z-index: 2;
+}
+body{
+    background-color: rgb(22, 13, 143);
+    /*
+    border-style: solid;
+    border-color: rgb(253, 0, 0);
+    
+    max-width: 100%;
+    max-height: 100%;*/
+    height : auto;
+    width: auto;
+    margin: 0%;
+    padding: 0%;
+}
+
+h1
+{
+    color: white;
+    padding-bottom: 0%;
+    padding-top: 10%;
+    margin: 0%;
+
+}
+
+h1:hover{
+    color: orange;
+}
+
+a
+{	
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: blue;
+}
+
+a:active
+{
+	color: grey;
+}
+
+.Lien-nav-Accueil
+{
+	list-style-type: none;
+
+    color: white;
+    text-align: center;
+
+	margin: 0%;
+    padding-left: 2%;
+    padding-right: 2%;
+	
+    transition: 0.5s all;
+    
+    /*
+    border-style: solid;
+    border-color: brown;
+    */
+}
+
+.Lien-nav-Accueil a:hover
+{
+    transition: 0.2s all;
+}
+
+.div-headers-1
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+}
+.div-headers-2
+{
+    color: white;
+    font-size: 150%;
+    width: 30%;
+    height: auto;
+}
+.div-headers-3
+{
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 30%;
+
+    align-items: center;
+}
+
+.div-separation
+{
+    width: 1%;
+    box-shadow: 11px 3px 15px -3px rgba(0,0,0,0.75);
+}
+
+.conteneur-1
+{
+    background-color: rgb(128, 128, 128);
+    margin: 0%;
+    padding: 0%;
+    display: block;
+
+    width: 100%;
+    height: auto;
+/*
+    border-style: solid;
+    border-color: rgb(184, 8, 8);
+    */
+}
+
+.conteneur-2
+{
+    /*
+    border-style: solid;
+    border-color: rgb(251, 255, 0);
+    */
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    /*overflow-y: scroll;*/
+}
+
+.Min-Image
+{
+    background-color: rgb(179, 6, 6);
+    width: 300px;
+    height: 200px;
+    /*
+    border-style: solid;
+    border-color: aliceblue;
+    */
+    border-top: 0px;
+    border-bottom: 0px;
+    padding: 0%;
+    margin: 0%;
+    display:block;
+    object-fit: cover;
+}
+
+.affichage-div-image
+{
+    width: auto;
+    height: auto;
+    padding: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    white-space: nowrap;
+    /*display: table-cell;*/
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
+
+    background-color: blueviolet;
+}
+
+.div-image
+{
+    width: auto;
+    height: auto;
+    padding: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    white-space: nowrap;
+    display: table-cell;
+    
+    /*border: 2px solid rgb(13, 136, 145);*/
+    
+}
+
+.a-image
+{      
+    color: #eee;          /* couleur du texte à ajuster suivant le besoin */
+    font-size: 20px;
+
+    width: auto;
+    
+    overflow: hidden;
+
+    padding-right: auto;
+	padding-left: auto;
+	
+	display: block;
+	display: -webkit-block;
+	
+	/*box-shadow: 0px 5px 10px;*/
+	
+    text-align: left; /* For Edge */
+    -moz-text-align-last: left; /* For Firefox prior 58.0 */
+    text-align-last: left;
+    float: left;
+    decoration: none;
+	
+	transition: 0.5s all;
+}
+.a-image:hover
+{
+    color: #eee; 
+}
+
+.a-image-background
+{
+    display: block;
+    position: absolute;   /* positionnement hors flux */
+    text-overflow: clip;
+
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
+
+    width: 300px;
+    height: 200px;
+
+    background-position: 100% 100%;
+    background-image: url(../media-site/background-image.png);
+    z-index: 1;
+    
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1,1);
+    transform: translateZ(0) scale(1,1);
+    -webkit-transition: opacity ease-in-out .25s;
+    transition: opacity ease-in-out .25s;
+
+    /*
+    background: rgb(77, 167, 36);     couleur du fond à ajuster suivant le besoin */
+    transition: all .5s;  /* la transition à appliquer */
+    opacity: 0;
+}
+
+.a-image-background:hover
+{
+    opacity: 1;
+}
+
+.div-image-span
+{
+    line-height:18em;
+}
+
+.div-image-span:hover
+{
+    
+}

@@ -1,0 +1,189 @@
+
+body
+{
+    background-color: rgb(51, 51, 51);
+    border-style: solid;
+    border-color: black;
+    margin: 0%;
+    padding: 0%;
+}
+
+h1
+{
+    text-align: center;
+    size: 5%;
+    font-size: 40px;
+   
+    margin: 0%;
+    margin-bottom: 0%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    color: white;
+
+    background-color: rgb(12, 12, 12);
+    
+    border-bottom: 2px solid black;
+}
+
+h1:hover
+{
+    transition: 0.5s;
+    color:green;
+}
+
+a
+{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: aqua;
+    font-size:15px;
+}
+
+.a-separation:visited:hover
+{
+    color: rgb(147, 235, 135);
+}
+
+.h1-sb
+{
+    margin-bottom: 0%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+
+.div-headers-1
+{
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    /*border-style: solid;
+    border-color: rgb(207, 221, 16);*/
+    align-items: center;
+    text-align: center;
+}
+
+.headers-flo
+{
+    float: center;
+    width: 5%;
+    margin: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0%;
+    
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.a-doc
+{
+    color: rgb(207, 207, 207);
+}
+
+.a-flo
+{
+    background-color: black;
+    color : white;
+    display: -webkit-block;
+    display:block;
+    width:100%;
+    height:100%;
+    writing-mode: vertical-rl;
+    text-align: center;
+    text-orientation: upright;
+    font-size: 550%;
+}
+.a-flo:hover
+{
+    font-size: 555%;
+    transition-duration: 0.5s;
+}
+
+.Titre-Nav
+{
+    margin: 0%;
+    padding: 0%;
+    
+    width: 100%;
+    height: auto;
+    max-height: 20%;
+
+    /*
+    border-style: solid;
+    border-color: rgb(8, 67, 156);*/
+}
+
+.Nav-Accueil-Liens
+{
+    /*
+    justify-content: center;
+    align-items: center;*/
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    height: 85%;
+    margin: 0%;
+    padding: 0%;
+
+    /*
+    border-style: solid;
+    border-color: rgb(8, 67, 156);*/
+}
+.Nav-Box
+{
+    margin: 0%;
+    padding: 0%;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    
+    width: 50%;
+    height: 100%;
+
+    /*
+    border-style: solid;
+    border-color: rgb(156, 8, 124);*/
+}
+.Nav-Dossier
+{
+    width: 100%;
+    height: auto;
+
+    margin: 0%;
+    padding: 0%;
+
+    border-left: 1px solid black;
+    
+    /*
+    border-style: solid;
+    border-color: rgb(156, 8, 8);*/
+
+    overflow-y: scroll;
+
+    background-color: rgba(36, 34, 34, 0.63);
+}
+
+.Nav-Fichiers
+{
+    width: 100%;
+    height: auto;
+
+    border-right: 2px solid black;
+    
+
+    margin: 0%;
+    padding: 0%;
+
+    /*
+    border-style: solid;
+    border-color: rgb(55, 156, 8);*/
+
+    overflow-y: scroll;
+
+    background-color: rgba(36, 34, 34, 0.63);
+}

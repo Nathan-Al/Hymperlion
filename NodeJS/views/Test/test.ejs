@@ -1,0 +1,53 @@
+<?php
+    echo "G";
+?>
+
+    <!doctype html>
+    <html lang="fr">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Pack de démarrage jQuery</title>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+
+        <a href="../" class="liensjavascript">Liens </a>
+    </body>
+    <script src="../JavaScript/index.js" ?>
+    </script>
+
+    </html>
+
+    <head>
+        <link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
+
+        <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+        <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <form action="/" method="post">
+            <textarea name="randomTxT" id="message"></textarea>
+            <input type="submit" value="Valider" />
+        </form>
+        <% if (local.error) {%>
+            <br>
+            <% error %>
+                <br>
+
+                <video id='my-video' class='video-js' controls preload='auto' width='640' height='264' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+	  <source src='Video/Ainzawa.mp4' type='video/mp4'>
+	  <source src='MY_VIDEO.webm' type='video/webm'>
+	  <p class='vjs-no-js'>
+		To view this video please enable JavaScript, and consider upgrading to a web browser that
+		<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+	  </p>
+	</video>
+
+                <script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
+    </body>
