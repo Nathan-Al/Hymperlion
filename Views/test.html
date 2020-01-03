@@ -1,0 +1,29 @@
+<html>
+<link rel="stylesheet" href='<?php echo $liens_css_newsite ?>'>
+<!-- Importations du css -->
+<form method="post" class="form-1" action=<?php echo $controller_newsite ?> enctype="multipart/form-data">
+
+    <body>
+        <div class="conteneur-1" id="conteneur-1">
+            <div class="div-1">
+                <div class="div-2">
+                    <h1 class="h1-a">Créer un nouveaux Sitee : </h1>
+                    <label for="nomfichier">Nom du site : </label>
+                    <input id="nomfichier" type="text" name="name" pattern="[aA-zZ]{1,10}" required>
+
+                    <input type="submit" id="buttonSubmit" name="create">
+
+                    <p id="warning_p" class="warning_p"></p>
+                    Utiliser un thème ?
+                    <input type="checkbox" name="use_theme" value="true" checked> Utiliser le thème default
+                    <input type="radio" name="theme" value="default" checked>
+                    </p>
+
+                    <p>Eviter de mettre qu'elle que chose de stupide :-)</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</form>
+
+</html>

@@ -334,3 +334,35 @@ function nettoyageCharacters($chaineCarach)
 
     return $chaineCarach;
 }
+
+
+//-------------------------------------------------___________ LECTURE DU CONTENUE D'UN FICHIERS __________
+
+function LireFichier($chemin_fichier)
+{
+    $Informations = array();
+    /*
+    $lines = file($chemin_fichier);
+    
+    foreach ($lines as $line_num => $line) 
+    {
+        $Informations[$line_num] = htmlspecialchars($line);  
+    }
+    */
+    if(fopen($chemin_fichier,'r+'))
+    {
+        $file = fopen($chemin_fichier,'r+');
+    }else
+    {
+        return false;
+    }
+    
+    $taille_fichier = filesize($chemin_fichier);
+   
+    for($x=0;$x<$taille_fichier;$x++)
+    {
+        $Informations[$x] = fgets($file,$taille_fichier);
+    }
+
+    return $Informations;
+}

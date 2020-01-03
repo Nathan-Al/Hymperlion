@@ -19,6 +19,7 @@
     $require_vue_index = $racine_views."affichage-index.php";
     $require_vue_menu = $racine_views."affichage-menu.php";
     $require_vue_newsite = $racine_views."affichage-newsite.php";
+    $require_vue_ecriture = $racine_views."affichage-ecriture.html";
 
 //MODEL
    $manager_page_model = $racine_manager."Manager-Page-Web-Model.php";
@@ -32,6 +33,7 @@
     $controller_gestion = $racine_controller."controll-gestion.php";
     $controller_upload = $racine_controller."controll-upload.php";
     $controller_newsite = $racine_controller."controll-newsite.php";
+    $controller_editeur = $racine_controller."controll-editeur.php";
 
 //TEMPLATE
     $require_html_header = $racine_template."header.php";
@@ -47,7 +49,8 @@
     $liens_css_gestion = $racine_css."style-gestion.css";
     $liens_css_menu = $racine_css."style-menu.css";
     $liens_css_newsite = $racine_css."style-newsite.css";
-    $liens_css_chargement = $racine_css."chargement.css";
+    $liens_css_chargement = $racine_css."style-chargement.css";
+    $liens_css_editeur = $racine_css."style-editeur.css";
 
 //JAVASCRIPT
     $script_index = $racine_javascript."script-index.js";
