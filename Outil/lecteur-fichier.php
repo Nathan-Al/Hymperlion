@@ -341,28 +341,80 @@ function nettoyageCharacters($chaineCarach)
 function LireFichier($chemin_fichier)
 {
     $Informations = array();
-    /*
-    $lines = file($chemin_fichier);
+    $rt = 0;
+
+    //Ouvrire le fichier pour avoir le nombre de ligne du doc
+    if(fopen($chemin_fichier,'r'))
+    {
+        $file = fopen($chemin_fichier,'r');
+    }else
+    {
+        return false;
+    }
+    while(fgets($file))
+    {
+        $rt++;
+    }
+    fclose($file);
     
+    //Ouvrire pour récupérer les ligne
+    if(fopen($chemin_fichier,'r'))
+    {
+        $file = fopen($chemin_fichier,'r');
+    }else
+    {
+        return false;
+    }
+    for($x=0;$x<$rt;$x++)
+    {
+        $Informations[$x] = fgets($file);
+    }
+    fclose($file);
+    return $Informations;
+
+    /* Version Brute 
+    
+    $lines = file($chemin_fichier);
     foreach ($lines as $line_num => $line) 
     {
         $Informations[$line_num] = htmlspecialchars($line);  
     }
     */
-    if(fopen($chemin_fichier,'r+'))
+}
+
+function GetOctetFirtsLine($chemin_fichier)
+{
+    $Liste_Octal = array();
+    $rt = 0;
+    $r=0;
+
+    //Ouvrire le fichier pour avoir le nombre de ligne du doc
+    if(fopen($chemin_fichier,'r'))
     {
-        $file = fopen($chemin_fichier,'r+');
+        $file = fopen($chemin_fichier,'r');
     }else
     {
         return false;
     }
-    
-    $taille_fichier = filesize($chemin_fichier);
-   
-    for($x=0;$x<$taille_fichier;$x++)
+    while(fgets($file))
     {
-        $Informations[$x] = fgets($file,$taille_fichier);
+        $rt++;
     }
-
-    return $Informations;
+    fclose($file);
+    
+    if(fopen($chemin_fichier,'r'))
+    {
+        $file = fopen($chemin_fichier,'r');
+    }else
+    {
+        return false;
+    }
+    fseek($file,0);
+    while($rt = fgets($file))
+    {
+        $Liste_Octal[$r] = strlen(trim($rt));
+        $r++;
+    }
+    fclose($file);
+    return $Liste_Octal;
 }

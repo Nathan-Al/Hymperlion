@@ -58,6 +58,7 @@
     $scrip_gestion_site = $racine_javascript."script-gestion.js";
     $scrip_chargement = $racine_javascript."srcipt-chargement.js";;
 /* LIENS DOSSIER */
+    $dossier_force_utf8 = "../forceutf8-master/";
     
 
 /* ICONE PAGE DU SITE */
