@@ -1,3 +1,5 @@
+npm install : Install tout les dépendance nécesaire
+npm run start : Ouvre le serveur avec nodemon (relance automatiquement a chaque modification)
 let query = url.parse(request.url, true).query : Permet de récupérer comme en php les élément envoyer url
 expl :
 index.html?name=lucas

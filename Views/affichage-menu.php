@@ -3,7 +3,7 @@
             <meta charset="UTF-8">
             <LINK rel="icon" type="image/png" href='<?php echo $IconeSite ?>'/> <!-- Icone de l onglet de la page web -->
 
-            <link rel="stylesheet" href=<?php echo $liens_css_menu ?>><!-- Importations du css -->
+            <link type="text/css" rel="stylesheet" href='<?php echo $liens_css_menu ?>'><!-- Importations du css -->
                 
                 <head>
                     <title>Menu</title> <!-- Titre de l onglet de la page web -->

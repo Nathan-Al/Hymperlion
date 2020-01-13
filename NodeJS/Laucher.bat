@@ -1,2 +1,0 @@
-node serveur.js
-pause
