@@ -1,15 +1,20 @@
 var lli = require('./Outil/lecteur-liens.js');
 var server = require("./NodeJS/serveur");
 var router = require("./NodeJS/router");
-var resquestHand = require("./NodeJS/gestionnaireRequetes");
+var gestionnaireRequetes = require("./NodeJS/gestionnaireRequetes");
 var handle = {};
 
-handle["/"] = resquestHand.start;
-handle["/start"] = resquestHand.start;
-handle["/favicon.ico"] = resquestHand.start;
-handle["/upload"] = resquestHand.upload;
+console.log("Index : ");
+
+handle["/"] = gestionnaireRequetes.receive;
+handle["/accueil"] = gestionnaireRequetes.receive;
+handle["/menu"] = gestionnaireRequetes.receive;
+handle["/favicon.ico"] = gestionnaireRequetes.receive;
+handle["/upload"] = gestionnaireRequetes.upload;
+handle["/Css/style-menu.css"] = gestionnaireRequetes.receive;
+handle["/grise"] = function rt() { console.log("Tromper le monde") };
 
 var css = lli.array_racine[2];
 var menu = lli.require_vue_menu;
 
-server.start('Views/affichage-menu.php', 8080, router.route, handle);
+server.start(8080, router.route, handle);

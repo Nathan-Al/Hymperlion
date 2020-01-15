@@ -29,7 +29,7 @@ exports.array_racine = [
 //VIEWS
 exports.require_vue_gestion = racine_views + "affichage-gestion.php";
 exports.require_vue_index = racine_views + "affichage-index.php";
-exports.require_vue_menu = racine_views + "affichage-menu.php";
+exports.require_vue_menu = racine_views + "affichage-menu.html";
 exports.require_vue_newsite = racine_views + "affichage-newsite.php";
 exports.require_vue_ecriture = racine_views + "affichage-ecriture.html";
 
