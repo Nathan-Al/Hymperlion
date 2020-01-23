@@ -15,7 +15,7 @@
         "php": "0.0.1"
     },
     "description": "Test",
-    "main": "serveur.js",
+    "main": "ServExpress/serveur.js",
     "devDependencies": {},
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",

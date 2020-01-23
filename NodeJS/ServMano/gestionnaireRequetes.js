@@ -3,8 +3,12 @@ var querystring = require("querystring");
 var fs = require("fs");
 var liens = require("../Outil/lecteur-liens.js");
 const path = require('path');
+
 const css = "Css/style-menu.css";
+const mediasite = "media-site/background-image.png";
 let pathname = '.${parsedUrl.pathname}';
+let cssDataPost = "";
+let imageDataPost = "";
 
 // Associe le type MIME par rapport au suffixe du fichier demandé
 const mimeType = {
@@ -25,9 +29,15 @@ const mimeType = {
 };
 
 function receive(response, postData, pathname) {
+    console.log("         ");
     console.log("Gestionnaire Requête : Le gestionnaire 'receive' est appelé.");
     console.log("Gestionnaire Requête : PostData : " + postData + "pathname : " + pathname);
-    const cssDataPost = path.parse(pathname).ext;
+
+    if (path.parse(pathname).ext == ".css") {
+        cssDataPost = path.parse(pathname).ext;
+    } else if (path.parse(pathname).ext == ".png" || path.parse(pathname).ext == ".jpg") {
+        imageDataPost = path.parse(pathname).ext;
+    }
 
     if (pathname == "/" || pathname == "/menu" || pathname == "/accueil") {
         fs.readFile("Views/affichage-menu.html", "utf-8", (err, data) => {
@@ -42,16 +52,38 @@ function receive(response, postData, pathname) {
 
                 response.setHeader('Content-type', mimeType[ext]);
                 //response.writeHead(200, { 'Content-type': 'text/html' })
-
             }
+            //console.log("Response : " + response);
             response.end(data);
         })
+
     } else if (cssDataPost == ".css") {
-        console.log("Css Gestionnaire : ");
+        console.log("Css Gestionnaire : " + css);
         var cssPath = css;
         var fileStream = fs.createReadStream(cssPath, "UTF-8");
-        response.writeHead(200, { "Content-Type": "text/css" })
-        fileStream.pipe(response);
+        var fileStreamIm = "";
+        //response.writeHead(200, { "Content-Type": "text/css" })
+
+        if (imageDataPost == ".png" || imageDataPost == ".jpg") {
+            console.log("Image Gestionnaire : " + mediasite);
+
+            fileStreamIm = fs.createReadStream(mediasite);
+            //response.writeHead(200, { "Content-Type": "image/png" })
+
+            fileStreamIm.pipe(response, { end: false });
+            fileStreamIm.on('end', () => {
+                response.end('Goodbye\n');
+            });
+
+        }
+
+        fileStream.pipe(response, { end: true });
+        fileStream.on('end', () => {
+            response.end('Goodbye\n');
+        });
+
+        //fileStream.pipe(fileStreamIm);
+        //fileStream.pipe(fileStreamIm).pipe(response);
     }
     /*var body = '<html>' +
         '<head>' +

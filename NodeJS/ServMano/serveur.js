@@ -13,6 +13,7 @@ function start(port, route, handle) {
     function onRequest(request, response) {
         var postData = "";
         var pathname = url.parse(request.url).pathname;
+        console.log("         ");
         console.log("Serveur : Requete reçue pour le chemin " + pathname + ".")
         request.setEncoding("utf8");
 
@@ -21,6 +22,7 @@ function start(port, route, handle) {
             console.log("Serveur : Paquet POST recu" + postDataChunk + ".");
         });
         request.addListener("end", function() {
+            console.log("Serveur : Pathname : " + pathname + ". handle : " + typeof(handle) + ".");
             route(handle, pathname, response, postData)
         });
     }

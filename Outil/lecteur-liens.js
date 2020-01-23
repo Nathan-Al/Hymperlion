@@ -1,7 +1,7 @@
 // Racine Dossier Site
 var racine_outil = "../Outil/";
 var racine_controller = "../Controller/";
-var racine_css = "../Css/";
+var racine_css = "Css/";
 var racine_views = "../Views/";
 var racine_model = "../Model/";
 var racine_site = "../Site/";
@@ -29,7 +29,7 @@ exports.array_racine = [
 //VIEWS
 exports.require_vue_gestion = racine_views + "affichage-gestion.php";
 exports.require_vue_index = racine_views + "affichage-index.php";
-exports.require_vue_menu = racine_views + "affichage-menu.html";
+exports.require_vue_menu = racine_views + "affichage-menu.ejs";
 exports.require_vue_newsite = racine_views + "affichage-newsite.php";
 exports.require_vue_ecriture = racine_views + "affichage-ecriture.html";
 

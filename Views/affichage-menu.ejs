@@ -5,7 +5,7 @@
 <LINK rel="icon" type="image/png" href='<?php echo $IconeSite ?>' />
 <!-- Icone de l onglet de la page web -->
 
-<link type="text/css" rel="stylesheet" href='../Css/style-menu.css' media="all">
+<link type="text/css" rel="stylesheet" href='style-menu.css' media="all">
 <!-- Importations du css -->
 
 <head>
@@ -19,7 +19,7 @@
     </div>
     <div class="div-header-editions">
         <div class="div-header-editions-newsite">
-            <a href="<?php echo $controller_newsite." ?newsite " ?>" class="a-div-header-edtions">Nouveaux Site</a>
+            <a href="" class="a-div-header-edtions">Nouveaux Site</a>
         </div>
 
     </div>
@@ -41,20 +41,20 @@
                     ?>
                 <div class="affichage-div-image">
                     <div class="min-affichage-div-image">
-                        <a class="a-image" href="<?php echo $racine_site.$website_list[$i] ?>">
+                        <a class="a-image" href="">
                             <div class="a-image-background">
                                 <!-- Background nom image (apparait en hover) -->
-                                <span class="div-image-span"><?php echo $website_list[$i] ?></span>
+                                <span class="div-image-span">Nom Test</span>
                             </div>
                         </a>
 
                         <div class="div-image">
-                            <img class="Min-Image" src="<?php echo $racine_site.$website_list[$i]." /Medias-Site/miniature.png " ?>"/>
+                            <img class="Min-Image" src="default.png" />
                         </div>
                     </div>
 
                     <div class="div-affichage-image-gestion">
-                        <a class="a-div-affichage-image-gestion" href="<?php echo $racine_controller.$controller_gestion." ?nom_site=".$website_list[$i] ?>">Gestion du site</a>
+                        <a class="a-div-affichage-image-gestion" href="">Gestion du site</a>
                     </div>
                 </div>
                 <?php
