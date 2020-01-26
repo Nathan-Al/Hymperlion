@@ -1,8 +1,8 @@
 <html>
-<link rel="stylesheet" href='<?php echo $liens_css_newsite ?>'>
+<link rel="stylesheet" href='style-newsite.css'>
 <!-- Importations du css -->
-<form method="post" class="form-1" action=<?php echo $controller_newsite ?> enctype="multipart/form-data">
-    <?php require $require_html_header;   Headers($IconeSite, $cssheader,$titre_page,$nom_site, $choix);?>
+<form method="post" class="form-1" action="" enctype="multipart/form-data">
+
 
     <body>
         <div class="conteneur-1" id="conteneur-1">
@@ -32,14 +32,14 @@
                         ?>
                         <div class="affichage-div-image">
                             <div class="min-affichage-div-image">
-                                <a class="a-image" href="<?php echo " Site de téléchargement du thème " ?>">
+                                <a class="a-image" href="">
                                     <div class="a-image-background">
                                         <!-- Background nom image (apparait en hover) -->
                                     </div>
                                 </a>
 
                                 <div class="div-image">
-                                    <img class="Min-Image" src="<?php echo " ../media-site/default.png " ?>"/>
+                                    <img class="Min-Image" src="default.png " />
                                 </div>
                             </div>
 
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="<?php echo $scrip_newsite ?>"></script>
+        <script type="text/javascript" src="script-newsite"></script>
     </body>
 </form>
 

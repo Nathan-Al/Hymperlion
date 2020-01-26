@@ -8,24 +8,33 @@ let app = express();
 var bodyParser = require('body-parser')
 var lli = require('../../Outil/lecteur-liens.js');
 
-function start(port) {
+let pathname = "";
 
+function start(port) {
+    //console.log(app.request.originalUrl);
     app.set('view engine', 'ejs')
 
     app.use(express.static("Css" /*lli.array_racine[2]*/ ));
     app.use(express.static("media-site"));
+    app.use(express.static("JavaScript"));
     app.use(bodyParser.urlencoded({ extended: false }));
     // parse application/json
     app.use(bodyParser.json());
+    app.use(function(req, res, next) {
+        pathname = req.url;
+        console.log("Serveur pathname : " + pathname);
+        next();
+    });
 
-
-    app.get('/', (request, response) => {
+    app.get("/", (request, response) => {
+        console.log(request.url);
         response.render(lli.require_vue_menu);
     })
-    app.get('/test', (request, response) => {
-        response.render('Test/test')
-    })
 
+    app.get("*", (request, response) => {
+        console.log(request.url);
+        response.render("../Views" + pathname);
+    })
 
     app.post('/', (request, response) => {
         if (request.body.randomTxT === undefined || request.body.randomTxT === '') {
@@ -34,11 +43,12 @@ function start(port) {
     })
 
     app.use(function(req, res, next) {
-        res.setHeader('Content-Type', 'text/plain');
+        res.setHeader('Content-Type', 'text/html');
         res.status(404).send('Page introuvable !');
     });
 
-    app.listen(port);
+    http.createServer(app).listen(port);
+    console.log("Serveur : Demarrage serveur port " + port);
 }
 
 exports.start = start;
