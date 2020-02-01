@@ -2,7 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<LINK rel="icon" type="image/png" href='<?php echo $IconeSite ?>' />
+<LINK rel="icon" type="image/png" href='icone.jpg' />
 <!-- Icone de l onglet de la page web -->
 
 <link type="text/css" rel="stylesheet" href='style-menu.css' media="all">
@@ -19,7 +19,7 @@
     </div>
     <div class="div-header-editions">
         <div class="div-header-editions-newsite">
-            <a href="affichage-newsite.ejs" class="a-div-header-edtions">Nouveaux Site</a>
+            <a href="controll-newsite.ejs" class="a-div-header-edtions">Nouveaux Site</a>
         </div>
 
     </div>
@@ -31,37 +31,42 @@
             <h1> Hymperlion</h1>
             <p> Bienvenu sur la page d'accueil du CMS </p>
         </div>
+        <% console.log("Affichage Menu : "); %>
+            <% let website_list = []; 
+        website_list = Controller.fonctionController.website_list; 
+        %>
 
-        <div class="div-2">
-
-            <?php
-                        if($website_list[0]!=null)
-                        for($i = 0; $i < sizeof($website_list); $i++)
+                <div class="div-2">
+                    <%  if(website_list[0]!=null) 
+                    {
+                        website_list.forEach(function(element, indice) 
                         {
-                    ?>
-                <div class="affichage-div-image">
-                    <div class="min-affichage-div-image">
-                        <a class="a-image" href="">
-                            <div class="a-image-background">
-                                <!-- Background nom image (apparait en hover) -->
-                                <span class="div-image-span">Nom Test</span>
+                    %>
+
+
+                        <div class="affichage-div-image">
+                            <div class="min-affichage-div-image">
+                                <a class="a-image" href="">
+                                    <div class="a-image-background">
+                                        <!-- Background nom image (apparait en hover) -->
+                                        <span class="div-image-span"><%=element%></span>
+                                    </div>
+                                </a>
+
+                                <div class="div-image">
+                                    <img class="Min-Image" src="default.png" />
+                                </div>
                             </div>
-                        </a>
 
-                        <div class="div-image">
-                            <img class="Min-Image" src="default.png" />
+                            <div class="div-affichage-image-gestion">
+                                <a class="a-div-affichage-image-gestion" href="<% Controller.liens+element %>">Gestion du site</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="div-affichage-image-gestion">
-                        <a class="a-div-affichage-image-gestion" href="/Error/404/404.php">Gestion du site</a>
-                    </div>
+                        <%  }); } %>
+
+
                 </div>
-                <?php
-                        }
-                    ?>
-
-        </div>
 
     </div>
 </body>

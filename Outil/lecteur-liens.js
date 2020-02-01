@@ -37,16 +37,17 @@ exports.require_vue_ecriture = racine_views + "affichage-ecriture.html";
 exports.manager_page_model = racine_manager + "Manager-Page-Web-Model.php";
 
 //TOOLS
-exports.outil_lecteur_fichier = racine_outil + "lecteur-fichier.php";
+exports.outil_lecteur_fichier = racine_outil + "lecteur-fichier.js";
 exports.outil_editeur_fichier = racine_outil + "editeur-fichier.php";
 exports.outil_createur_fichier = racine_outil + "createur-fichier.php";
 
 //CONTROLLER
-exports.controller_gestion = racine_controller + "controll-gestion.php";
-exports.controller_upload = racine_controller + "controll-upload.php";
-exports.controller_newsite = racine_controller + "controll-newsite.php";
-exports.controller_editeur = racine_controller + "controll-editeur.php";
-
+exports.array_controller = [
+    gestion = racine_controller + "controll-gestion.php",
+    upload = racine_controller + "controll-upload.php",
+    newsite = racine_controller + "controll-newsite.php",
+    editeur = racine_controller + "controll-editeur.php"
+];
 //TEMPLATE
 exports.require_html_header = racine_template + "header.php";
 exports.require_html_footer = racine_template + "footer.php";
@@ -68,8 +69,11 @@ exports.liens_css_editeur = racine_css + "style-editeur.css";
 exports.script_index = racine_javascript + "script-index.js";
 exports.scrip_newsite = racine_javascript + "script-newsite.js";
 exports.scrip_gestion_site = racine_javascript + "script-gestion.js";
-exports.scrip_chargement = racine_javascript + "srcipt-chargement.js";;
-/* LIENS DOSSIER */
+exports.scrip_chargement = racine_javascript + "srcipt-chargement.js";
+
+//NODE JS
+exports.script_gestion_requete = "../NodeJS/ServExpress/gestionnaireRequetes.js"
+    /* LIENS DOSSIER */
 exports.dossier_force_utf8 = "../forceutf8-master/";
 
 
