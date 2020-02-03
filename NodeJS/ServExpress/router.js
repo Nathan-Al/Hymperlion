@@ -16,17 +16,21 @@ function router(request, response, pathname, nbreq) {
     lli.array_controller.forEach(function(element, indice) {
         li = element.lastIndexOf("/");
         mo = pathname.lastIndexOf(".");
+
         nomPage[indice] = element.substring(li + 1);
+        console.log(" nomPage : " + nomPage[indice]);
         if (pathname == nomPage[indice]) {
             urlValide = true;
             urlPage = nomPage[indice];
+            console.log("    URL PAGE : " + urlPage);
         }
     });
 
-    if (urlValide = true && pathname != "/") {
-        console.log("Router : Normal circulation :");
-        //gestreq.gestionrequ(request, response, urlPage, nbreq++);
-    } else if (pathname == "/" || pathname == "/style-menu.css" || "/default.png") {
+    if (urlValide = true && pathname != "/" && pathname != "/menu") {
+        console.log("Router : Normal circulation : " + pathname);
+        console.log("    ");
+        gestreq.gestionrequ(request, response, urlPage, nbreq++);
+    } else if (pathname == "/" || pathname == "/style-menu.css" || pathname == "/default.png" || pathname == "/menu") {
         console.log("Router : Envoie Menu");
         if (mo = ".css")
             console.log("Router : Css " + mo);
@@ -36,6 +40,7 @@ function router(request, response, pathname, nbreq) {
     } else if (urlValide = false) {
         response.setHeader('Content-Type', 'text/html');
         response.status(404).send('Page introuvable !');
+        response.end();
     }
 
     /*

@@ -1,21 +1,24 @@
-<< ? php
-require "../Outil/lecteur-liens.php";
-require $outil_createur_fichier;
-require $outil_lecteur_fichier;
+let outilLectureLiens = require("../Outil/lecteur-liens.js");
+let gestReq = require(outilLectureLiens.script_gestion_requete);
+let outilLecteurFichier = require(outilLectureLiens.outil_lecteur_fichier);
+let createur_fichier = require(outilLectureLiens.outil_createur_fichier);
 
-$IcoSite = $IconeSite;
-$css = $liens_css_gestion;
-$cssheader = $liens_css_header;
-$cssbody = $liens_css_gestion;
-$cssfooter = $liens_css_foooters;
-$titre_page = "Hymperlion - Gestion";
-$nom_site = "Nouveaux Site";
-$choix = 1;
 
-$website_list = array();
+let IcoSite = outilLectureLiens.IconeSite;
+let css = outilLectureLiens.liens_css_gestion;
+let cssheader = outilLectureLiens.liens_css_header;
+let cssbody = outilLectureLiens.liens_css_gestion;
+let cssfooter = outilLectureLiens.liens_css_foooters;
+let titre_page = "Hymperlion - Gestion";
+let nom_site = "Nouveaux Site";
+let choix = 1;
 
-$website_list = ScanDossier($racine_template);
-require $require_vue_newsite;
+let website_list = new Array();
+
+website_list = outilLecteurFichier.ScanDossier(racine_template);
+require(outilLectureLiens.require_vue_newsite);
+
+/*
 if (isset($_POST["create"])) {
     $fichiers = array();
     $fichiers = str_replace("affichage-", "", ScanFichiers($racine_views));
@@ -46,4 +49,4 @@ if (isset($_POST["create"])) {
             $fichier_cree = false;
         }
     }
-}
+}*/

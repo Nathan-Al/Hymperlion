@@ -17,8 +17,9 @@ let nbreq = 0;
 function start(port) {
     //console.log(app.request.originalUrl);
     app.use(function WaitOnRequest(req, res, next) {
+        pathname = req.url;
         console.log("       ");
-        console.log(message + "WaitOnRequest");
+        console.log(message + "WaitOnRequest nbreq : " + nbreq + " requetes : " + pathname);
         app.set("Views")
         app.set('view engine', 'ejs')
         app.use(express.static("Css" /*lli.array_racine[2]*/ ));
@@ -30,13 +31,15 @@ function start(port) {
         app.use(bodyParser.urlencoded({ extended: false }));
         // parse application/json
         app.use(bodyParser.json());
-        app.get("*", (request, response) => {
-            pathname = req.url;
 
+        app.get("*", (request, response) => {
             console.log("Serveur pathname : " + pathname + " nbreq:" + nbreq);
             routeur.router(request, response, pathname, nbreq++);
+        });
 
-        })
+        app.post("*", (request, response) => {
+            console.log("Serveur post : " + " nbreq:" + nbreq);
+        });
 
         next();
     })

@@ -43,10 +43,10 @@ exports.outil_createur_fichier = racine_outil + "createur-fichier.php";
 
 //CONTROLLER
 exports.array_controller = [
-    gestion = racine_controller + "controll-gestion.php",
-    upload = racine_controller + "controll-upload.php",
-    newsite = racine_controller + "controll-newsite.php",
-    editeur = racine_controller + "controll-editeur.php"
+    gestion = racine_controller + "controll-gestion.js",
+    upload = racine_controller + "controll-upload.js",
+    newsite = racine_controller + "controll-newsite.js",
+    editeur = racine_controller + "controll-editeur.js"
 ];
 //TEMPLATE
 exports.require_html_header = racine_template + "header.php";

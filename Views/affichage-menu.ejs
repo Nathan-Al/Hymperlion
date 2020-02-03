@@ -19,7 +19,7 @@
     </div>
     <div class="div-header-editions">
         <div class="div-header-editions-newsite">
-            <a href="controll-newsite.ejs" class="a-div-header-edtions">Nouveaux Site</a>
+            <a href="controll-newsite.js" class="a-div-header-edtions">Nouveaux Site</a>
         </div>
 
     </div>
@@ -31,42 +31,41 @@
             <h1> Hymperlion</h1>
             <p> Bienvenu sur la page d'accueil du CMS </p>
         </div>
-        <% console.log("Affichage Menu : "); %>
-            <% let website_list = []; 
+        <% let website_list = []; 
         website_list = Controller.fonctionController.website_list; 
         %>
 
-                <div class="div-2">
-                    <%  if(website_list[0]!=null) 
+            <div class="div-2">
+                <%  if(website_list[0]!=null) 
                     {
                         website_list.forEach(function(element, indice) 
                         {
                     %>
 
 
-                        <div class="affichage-div-image">
-                            <div class="min-affichage-div-image">
-                                <a class="a-image" href="">
-                                    <div class="a-image-background">
-                                        <!-- Background nom image (apparait en hover) -->
-                                        <span class="div-image-span"><%=element%></span>
-                                    </div>
-                                </a>
-
-                                <div class="div-image">
-                                    <img class="Min-Image" src="default.png" />
+                    <div class="affichage-div-image">
+                        <div class="min-affichage-div-image">
+                            <a class="a-image" href="controll-affichage-site.js?nom_site=<%= element %>">
+                                <div class="a-image-background">
+                                    <!-- Background nom image (apparait en hover) -->
+                                    <span class="div-image-span"><%=element%></span>
                                 </div>
-                            </div>
+                            </a>
 
-                            <div class="div-affichage-image-gestion">
-                                <a class="a-div-affichage-image-gestion" href="<% Controller.liens+element %>">Gestion du site</a>
+                            <div class="div-image">
+                                <img class="Min-Image" src="default.png" />
                             </div>
                         </div>
 
-                        <%  }); } %>
+                        <div class="div-affichage-image-gestion">
+                            <a class="a-div-affichage-image-gestion" href="controll-gestion.js?nom_site=<%= element %>">Gestion du site</a>
+                        </div>
+                    </div>
+
+                    <%  }); } %>
 
 
-                </div>
+            </div>
 
     </div>
 </body>
