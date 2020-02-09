@@ -1,8 +1,32 @@
 <html>
-<link rel="stylesheet" href='style-newsite.css'>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
+<meta charset="UTF-8">
+<LINK rel="icon" type="image/png" href="icone.jpg">
+<!-- Icone de l onglet de la page web -->
+
+<link type="text/css" rel="stylesheet" href='style-newsite.css'>
+
+<head>
+    <title>
+        <%= Controller.titre_page %>
+    </title>
+    <!-- Titre de l onglet de la page web -->
+</head>
+<header>
+    <div class="div-header-nom">
+        <a href="../" class="a-headers">
+            <h1> Hymperlion </h1>
+        </a>
+    </div>
+    <div class="div-header-nom-site">
+        <h1 class="h1-nomsite">
+            <%= Controller.nompage %>
+        </h1>
+    </div>
+</header>
+
 <!-- Importations du css -->
 <form method="post" class="form-1" action="" enctype="multipart/form-data">
-
 
     <body>
         <div class="conteneur-1" id="conteneur-1">
@@ -25,11 +49,13 @@
 
                 <div class="div-3">
 
-                    <?php
-                            if($website_list[0]!=null)
-                            for($i = 0; $i < sizeof($website_list); $i++)
+                    <%  
+                    website_list = Controller.fonctionController.website_list;
+
+                    if(website_list[0]!=null) 
+                            website_list.forEach(function(element, indice) 
                             {
-                        ?>
+                        %>
                         <div class="affichage-div-image">
                             <div class="min-affichage-div-image">
                                 <a class="a-image" href="">
@@ -45,14 +71,14 @@
 
                             <div class="div-affichage-image-gestion">
                                 <p class="p-div-affichage-image-gestion">
-                                    <?php echo $website_list[$i] ?>
+                                    <%= element %>
                                 </p>
-                                <input type="radio" name="theme" value="<?php echo $website_list[$i] ?>">
+                                <input type="radio" name="theme" value="<%= element %>">
                             </div>
                         </div>
-                        <?php
-                            }
-                        ?>
+                        <%
+                                });
+                            %>
                 </div>
             </div>
         </div>

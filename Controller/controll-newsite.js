@@ -1,22 +1,28 @@
 let outilLectureLiens = require("../Outil/lecteur-liens.js");
 let gestReq = require(outilLectureLiens.script_gestion_requete);
 let outilLecteurFichier = require(outilLectureLiens.outil_lecteur_fichier);
-let createur_fichier = require(outilLectureLiens.outil_createur_fichier);
+//let createur_fichier = require(outilLectureLiens.outil_createur_fichier);
 
+var fonctionController = new Object();
 
-let IcoSite = outilLectureLiens.IconeSite;
-let css = outilLectureLiens.liens_css_gestion;
-let cssheader = outilLectureLiens.liens_css_header;
-let cssbody = outilLectureLiens.liens_css_gestion;
-let cssfooter = outilLectureLiens.liens_css_foooters;
-let titre_page = "Hymperlion - Gestion";
-let nom_site = "Nouveaux Site";
-let choix = 1;
+fonctionController.IcoSite = outilLectureLiens.IconeSite;
+fonctionController.css = outilLectureLiens.liens_css_gestion;
+fonctionController.cssheader = outilLectureLiens.liens_css_header;
+fonctionController.cssbody = outilLectureLiens.liens_css_gestion;
+fonctionController.cssfooter = outilLectureLiens.liens_css_foooters;
+fonctionController.titre_page = "Hymperlion - Gestion";
+fonctionController.nom_site = "Nouveaux Site";
+fonctionController.choix = 1;
+let chemin = outilLectureLiens.array_racine[6];
+let iy = chemin.lastIndexOf(".");
+chemin = chemin.substring(iy + 1);
+chemin = chemin.replace("/", "");
 
-let website_list = new Array();
-
-website_list = outilLecteurFichier.ScanDossier(racine_template);
-require(outilLectureLiens.require_vue_newsite);
+let website_list = [];
+website_list = outilLecteurFichier.ScanDossier(chemin);
+console.log("webliste : " + website_list[0]);
+fonctionController.website_list;
+fonctionController.Views = outilLectureLiens.require_vue_newsite;
 
 /*
 if (isset($_POST["create"])) {
@@ -50,3 +56,5 @@ if (isset($_POST["create"])) {
         }
     }
 }*/
+
+exports.fonctionController = fonctionController;

@@ -16,7 +16,10 @@
     },
     "description": "Test",
     "main": "ServExpress/serveur.js",
-    "devDependencies": {},
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "mocha": "^7.0.1"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon index.js"

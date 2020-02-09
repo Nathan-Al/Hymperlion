@@ -27,19 +27,19 @@ exports.array_racine = [
 /* LIENS REQUIRE FICHIER // DOSSIER OUTIL */ //----------------------------------
 
 //VIEWS
-exports.require_vue_gestion = racine_views + "affichage-gestion.php";
-exports.require_vue_index = racine_views + "affichage-index.php";
+exports.require_vue_gestion = racine_views + "affichage-gestion.ejs";
+exports.require_vue_index = racine_views + "affichage-index.ejs";
 exports.require_vue_menu = racine_views + "affichage-menu.ejs";
-exports.require_vue_newsite = racine_views + "affichage-newsite.php";
-exports.require_vue_ecriture = racine_views + "affichage-ecriture.html";
+exports.require_vue_newsite = racine_views + "affichage-newsite.ejs";
+exports.require_vue_ecriture = racine_views + "affichage-ecriture.ejs";
 
 //MODEL
-exports.manager_page_model = racine_manager + "Manager-Page-Web-Model.php";
+exports.manager_page_model = racine_manager + "Manager-Page-Web-Model.js";
 
 //TOOLS
 exports.outil_lecteur_fichier = racine_outil + "lecteur-fichier.js";
-exports.outil_editeur_fichier = racine_outil + "editeur-fichier.php";
-exports.outil_createur_fichier = racine_outil + "createur-fichier.php";
+exports.outil_editeur_fichier = racine_outil + "editeur-fichier.js";
+exports.outil_createur_fichier = racine_outil + "createur-fichier.js";
 
 //CONTROLLER
 exports.array_controller = [
@@ -49,9 +49,9 @@ exports.array_controller = [
     editeur = racine_controller + "controll-editeur.js"
 ];
 //TEMPLATE
-exports.require_html_header = racine_template + "header.php";
-exports.require_html_footer = racine_template + "footer.php";
-exports.require_html_body = racine_template + "body.php";
+exports.require_html_header = racine_template + "header.ejs";
+exports.require_html_footer = racine_template + "footer.ejs";
+exports.require_html_body = racine_template + "body.ejs";
 exports.require_chargement = racine_template + "chargement.html";
 
 //CSS 
