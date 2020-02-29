@@ -1,82 +1,29 @@
 let fs = require('fs')
 let fsPromises = require('fs').promises;
 
-exports.ScanDossier = function ScanDosier(liensDossier) {
-        return new Promise(function(resolved, reject) {
-            console.log("Scan Dossier : " + liensDossier)
-            let document = [];
-            fs.readdir(liensDossier, function(err, items) {
-                items.forEach(function(element, indice) {
-                    document[indice] = element;
-                    //console.log(document[indice] + " indice : " + indice);
-                });
-                console.log("Scan Dossier hors : ---------- : " + document[0]);
-                if (err)
-                    reject(err);
-            })
-            resolved(document)
-        });
+exports.ScanDossier = async function ScanDosier(liensDossier, extensions) {
+    //La valeurs extensions ne peut être que true ou false, elle détermine si les fichier && les dossier doivent être lister
+    //La fonction anonyme getAsyncArray permet de récupérer les fichiers sans avoirs a utiliser de await en dehors de la fonctions
+    //let promisesDocument = await fsPromises.readdir(liensDossier);
+    let document = [];
+    let documentReturn = await fsPromises.readdir(liensDossier);
 
-        //resolve(document);
-
-        /*
-                fs.readdir(liensDossier,
-                    function(err, items) {
-                        items.forEach(function(element, indice) {
-                            document[indice] = element;
-                            //console.log(document[indice] + " indice : " + indice);
-                        });
-                        console.log("Scan Dossier hors : ---------- : " + document[0]);
-                    });
-                return document;*/
+    if (extensions) {
+        return documentReturn;
+    } else {
+        let i = 0;
+        if (documentReturn instanceof Array)
+            documentReturn.forEach((element, index) => {
+                if (element.indexOf(".") == -1) {
+                    document[i] = element;
+                    i++;
+                }
+            });
+        return document;
     }
-    /*
-    exports.ScanDossier = function ScanDosier(liensDossier) {
-        console.log("Scan Dossier : " + liensDossier)
-        let document = [];
-        document = fs.readdirSync(liensDossier);
-        document.forEach(function(element, indice) {
-            //document[indice] = element;
-            console.log(document[indice] + " indice : " + indice);
-        });
 
-        return document;
-    };*/
-    /*
-    exports.ScanDossier = function ScanDosier(liensDossier) {
-            return new Promise(function(resolve, reject) {
-                console.log("Scan Dossier : " + liensDossier)
-                let document = [];
-                fs.readdir(liensDossier, function(err, items) {
-                    items.forEach(function(element, indice) {
-                        document[indice] = element;
-                        //console.log(document[indice] + " indice : " + indice);
-                    });
-                    console.log("Scan Dossier hors : ---------- : " + document[0]);
-                    if (document[0] != undefined) {
-                        resolve(document);
-                    } else {
-                        reject(document);
-                    }
-                });
+}
 
-            });
-        }*/
-    /*
-    exports.ScanDossier = function ScanDosier(liensDossier) {
-        console.log("Scan Dossier : " + liensDossier)
-        let document = [];
-
-        fs.readdir(liensDossier, function(err, items) {
-
-            items.forEach(function(element, indice) {
-                document[indice] = element;
-            });
-            console.log("Scan Dossier hors : ---------- : " + document[0]);
-        });
-
-        return document;
-    }*/
 
 exports.LireFichier = function LireFichier($fichier) {
     let infoFichier = "";

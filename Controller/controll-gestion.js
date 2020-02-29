@@ -1,30 +1,27 @@
-require "../Outil/lecteur-liens.php";
-require $outil_createur_fichier;
-require $outil_lecteur_fichier;
+let outilLectureLiens = require("../Outil/lecteur-liens.php");
+let outilLecteurFichier = require(outilLectureLiens.outil_lecteur_fichier);
+let createur_fichier = require(outilLectureLiens.outil_createur_fichier);
 
-$IcoSite = $IconeSite;
-$css = $liens_css_gestion;
-$cssheader = $liens_css_header;
-$cssbody = $liens_css_gestion;
-$cssfooter = $liens_css_foooters;
-$titre_page = "Hymperlion - Gestion";
-$nom_site = $_GET["nom_site"];
-$choix = 1;
+let IcoSite = outilLectureLiens.IconeSite;
+let css = outilLectureLiens.liens_css_gestion;
+let cssheader = outilLecture.Liensliens_css_header;
+let cssbody = outilLectureLiens.liens_css_gestion;
+let cssfooter = outilLectureLiens.liens_css_foooters;
+let titre_page = "Hymperlion - Gestion";
+let nom_site = $_GET["nom_site"];
+let choix = 1;
 
-$Dossier = array();
-$Dossier = ScanFichiers($racine_site.$nom_site.
-    "/Views");
+let Dossier = new Array();
+Dossier = ScanFichiers(outilLectureLiens.racine_site.nom_site + "/Views");
 
 if (isset($_POST["supp"]))
     if ($_POST["name"] != "" && $_POST["name"] != null) {
         $nomPage = nettoyageCharacters($_POST["name"]);
 
         if (SupprimerFichier($dossier, $nomPage))
-            echo "Fichier supprimer !";
+            console.log("Fichier supprimer !");
     }
 
-for ($i = 0; $i < sizeof($Dossier); $i++) {
-    $Dossier[$i];
+for (let i = 0; i < sizeof(Dossier); $i++) {
+    Dossier[$i];
 }
-
-require $require_vue_gestion;

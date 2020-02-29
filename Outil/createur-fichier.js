@@ -1,4 +1,4 @@
-function CreerSite($nom, $choix) {
+function CreerSite(nom, choix) {
     let lli = require("../Outil/lecteur-liens.php");
     require(lli.manager_page_model);
 
@@ -11,9 +11,9 @@ function CreerSite($nom, $choix) {
     let ok = 0;
     let do_all_the_work;
 
-    if ($choix) {
-        if (CreeDossier($racine_site, $nom)) {
-            if (CopierDossier($racine_template +
+    if (choix) {
+        if (CreeDossier(racine_site, $nom)) {
+            if (CopierDossier(racine_template +
                     "Default/", racine_site + nom +
                     "/")) {
                 do_all_the_work = true;
@@ -28,7 +28,7 @@ function CreerSite($nom, $choix) {
     } else {
         if (CreeDossier(racine_site, nom)) {
             for (p = 0; p < sizeof(dossier); p++) {
-                if (CreeDossier(racine_site.$nom, dossier[$p])) {
+                if (CreeDossier(racine_site.nom, dossier[p])) {
                     ok++;
                 }
             }

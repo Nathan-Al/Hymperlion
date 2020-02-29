@@ -3,13 +3,16 @@ let gestReq = require(outilLectureLiens.script_gestion_requete);
 let outilLecteurFichier = require(outilLectureLiens.outil_lecteur_fichier);
 
 // exports.controller = function controller() {
-exports.Controller = new Promise(function(resolved, reject) {
-    var fonctionController = new Object();
+exports.Controller = async function Controller() {
+    var fonctionController = [];
     console.log("Controll Menu : ");
+
     let website_list = [];
 
     let chemin = outilLectureLiens.array_racine[5];
     let iy = chemin.lastIndexOf(".");
+    let Promises = "";
+
     chemin = chemin.substring(iy + 1);
     chemin = chemin.replace("/", "");
 
@@ -17,23 +20,16 @@ exports.Controller = new Promise(function(resolved, reject) {
 
     //const listeSite = new Promise((resolve, reject) => {
 
-    let Promises = outilLecteurFichier.ScanDossier(chemin).then((response) => {
-        console.log("Webisitelist : " + response);
-        website_list = response;
-    }).catch((error) => {
-        console.log("Webisitelist : Erreur " + error);
-    });
+    fonctionController.website_list = await outilLecteurFichier.ScanDossier(chemin, false)
+        /*.then(function(response) {
+                console.log("Webisitelist : " + response);
+                fonctionController.website_list = response;
+            }).catch(function(error) {
+                console.log("Webisitelist : Erreur " + error);
+            });;*/
 
-    console.log("Controll-Menu : Résultat : " + website_list + "Promises : " + Promises);
-    console.log("Webisitelist : " + website_list[0]);
-
-    if (website_list[0] != undefined) {
-        fonctionController.website_list;
-        resolved(fonctionController)
-    } else {
-        reject();
-    }
-});
+    return fonctionController;
+};
 
 /*masaka = outilLecteurFichier.ScanDossier(chemin).then(function(response) {
     //console.log("Response : " + response);

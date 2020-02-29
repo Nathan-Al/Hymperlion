@@ -1,3 +1,4 @@
+
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
 <meta charset="UTF-8">
@@ -8,7 +9,7 @@
 
 <head>
     <title>
-        <%= Controller.titre_page %>
+       
     </title>
     <!-- Titre de l onglet de la page web -->
 </head>
@@ -20,13 +21,13 @@
     </div>
     <div class="div-header-nom-site">
         <h1 class="h1-nomsite">
-            <%= Controller.nompage %>
+            
         </h1>
     </div>
 </header>
 
 <!-- Importations du css -->
-<form method="post" class="form-1" action ="controll-newsite" ><!-- enctype="multipart/form-data" --> 
+<form method="POST" class="form-1" action ="/" >
 
     <body>
         <div class="conteneur-1" id="conteneur-1">
@@ -48,14 +49,7 @@
                 </div>
 
                 <div class="div-3">
-
-                    <%  
-                    website_list = Controller.website_list;
-
-                    if(website_list[0]!=null) 
-                            website_list.forEach(function(element, indice) 
-                            {
-                        %>
+                    
                         <div class="affichage-div-image">
                             <div class="min-affichage-div-image">
                                 <a class="a-image" href="">
@@ -71,14 +65,12 @@
 
                             <div class="div-affichage-image-gestion">
                                 <p class="p-div-affichage-image-gestion">
-                                    <%= element %>
+                                    
                                 </p>
-                                <input type="radio" name="theme" value="<%= element %>">
+                                <input type="radio" name="theme" value="">
                             </div>
                         </div>
-                        
-                        <%    }); %> 
-                            
+                         
                 </div>
             </div>
         </div>

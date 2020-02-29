@@ -16,18 +16,20 @@ function router(request, response, pathname, nbreq) {
         li = element.lastIndexOf("/");
         mo = pathname.lastIndexOf(".");
         zi = pathname.lastIndexOf("/");
+        t = pathname.lastIndexOf("?");
+        subZi = pathname.substring(1);
 
         nomPage[indice] = element.substring(li + 1);
         pathnameSans = pathname.substring(zi + 1);
-        //console.log(" nomPage : " + nomPage[indice] + " zi : " + pathnameSans);
-        if (pathnameSans == nomPage[indice]) {
+        //console.log("Router : nomPage : " + nomPage[indice] + " zi : " + pathnameSans + " Subzi : " + subZi);
+        if (subZi == nomPage[indice]) {
             urlValide = true;
             urlPage = nomPage[indice];
-            //console.log("    URL PAGE : " + urlPage);
+            console.log("Router :    URL PAGE : " + urlPage);
         }
     });
 
-    if (urlValide = true && pathname != "/" && pathname != "/menu" && pathname != "/favicon.ico") {
+    if (urlValide === true && pathname != "/" && pathname != "/menu" && pathname != "/favicon.ico") {
         console.log("Router : Normal circulation : " + pathname);
         console.log("    ");
         gestreq.gestionrequ(request, response, "../" + lli.array_racine[1] + urlPage, nbreq++);
@@ -38,9 +40,11 @@ function router(request, response, pathname, nbreq) {
         console.log("Router : Pathname " + pathname);
         //require("../../Controller/controll-menu");
         gestreq.gestionrequ(request, response, "../../Controller/controll-menu", nbreq++);
-    } else if (urlValide = false || pathname == "/favicon.ico") {
+
+    }
+    else /*if (urlValide = false || pathname == "/favicon.ico") */{
         response.setHeader('Content-Type', 'text/html');
-        response.status(404).send('Page introuvable !');
+        response.status(404).send('Error 404 Page introuvable !');
         response.end();
     }
 }
