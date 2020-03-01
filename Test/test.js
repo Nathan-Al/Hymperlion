@@ -1,12 +1,14 @@
 let test2 = require("./test2");
 let y = "Site";
 let G = "";
+let site = "Test/";
 
 
 start();
 
 
 function start() {
+    /*
     G = test2.ScanDossier(y, true).then(function(response) {
         console.log("Webisitelist : " + response);
         website_list = response;
@@ -14,6 +16,12 @@ function start() {
         console.log("Webisitelist : Erreur " + error);
     });
 
+
+    H = test2.CreeDossier(site, "MamaSita");
+    if (H)
+        console.log("Ok Site créer")*/
+
+    T = test2.CopierDossier(site + "MamaSita/", site + "copierA");
 }
 
 

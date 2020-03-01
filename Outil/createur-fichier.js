@@ -1,13 +1,15 @@
-function CreerSite(nom, choix) {
-    let lli = require("../Outil/lecteur-liens.php");
-    require(lli.manager_page_model);
+let lli = require("../Outil/lecteur-liens.php");
+let fs = require("fs");
 
+function CreerSite(nom, choix) {
+    require(lli.manager_page_model);
+    let racine_site = lli.array_racine[5];
     let fichier = {
         "vue": racine_site + nom + "/Views" + "/" + "view-",
         "controller": racine_site + nom + "/Controller" + "/" + "control-",
         "css": $racine_site + nom + "/Css" + "/" + "css-"
     };
-    let dossier = array("Views", "Controller", "Css", "Model", "Outil", "Error", "Medias-Site");
+    let dossier = ["Views", "Controller", "Css", "Model", "Outil", "Error", "Medias-Site"];
     let ok = 0;
     let do_all_the_work;
 
@@ -46,10 +48,11 @@ function CreerSite(nom, choix) {
     return do_all_the_work;
 }
 
-function CreeDossier(destination, nom) {
-    chemin = destination;
-    nomfichier = nom;
-
+async function CreeDossier(destination, nom) {
+    await fs.mkdir(destination + "/" + nom, { recursive: true }, (err) => {
+        if (err) return false;
+    });
+    /*
     if (!mkdir(chemin + "/" + nomfichier, 777)) {
         die('Echec lors de la création des répertoires...');
         return false;
@@ -57,7 +60,7 @@ function CreeDossier(destination, nom) {
         chmod($chemin + "/" + $nomfichier, 0777);
         return true;
     }
-
+*/
 }
 
 function CreePage(destination, nom) {
@@ -79,7 +82,7 @@ function CreePage(destination, nom) {
                         chmod(css, 0777);
 
                         return true;
-                    } catch (Exception e) {
+                    } catch (Exception) {
                         return false;
                     }
                 } else {
@@ -104,7 +107,7 @@ function CreeFichier(destination, nom) {
                 fopen(chemin + nomfichier, 'wb');
                 chmod(chemin + nomfichier, 0777);
                 return true;
-            } catch (Exception e) {
+            } catch (Exception) {
                 return false;
             }
         } else {
@@ -132,7 +135,7 @@ function SupprimerFichier(destination, nom) {
                         unlink(nom_css);
 
                         return true;
-                    } catch (Exception e) {
+                    } catch (Exception) {
                         return false;
                     }
                 } else {
@@ -156,11 +159,11 @@ function CopierDossier(dir2copy, dir_paste) {
             // On liste les dossiers et fichiers de $dir2copy
             while ((file = readdir(dh)) !== false) {
                 // Si le dossier dans lequel on veut coller n'existe pas, on le créé
-                if (!is_dir(dir_paste)) mkdir(dir_paste, 0777);
+                if (!is_dir(dir_paste)) mkdir(dir_paste, 0777)
 
                 // S'il s'agit d'un dossier, on relance la fonction rÃ©cursive
-                if (is_dir(dir2copy + file) && file != '..' && file != '.') CopierDossier(dir2copy + file + '/', dir_paste + file + '/');
-                // S'il sagit d'un fichier, on le copie simplement
+                if (is_dir(dir2copy + file) && file != '..' && file != '.') CopierDossier(dir2copy + file + '/', dir_paste + file + '/')
+                    // S'il sagit d'un fichier, on le copie simplement
                 elseif(file != '..' && file != '.') {
                     copy(dir2copy + file, dir_paste + file);
                     chmod(dir_paste + file, 0777);

@@ -41,8 +41,7 @@ function router(request, response, pathname, nbreq) {
         //require("../../Controller/controll-menu");
         gestreq.gestionrequ(request, response, "../../Controller/controll-menu", nbreq++);
 
-    }
-    else /*if (urlValide = false || pathname == "/favicon.ico") */{
+    } else /*if (urlValide = false || pathname == "/favicon.ico") */ {
         response.setHeader('Content-Type', 'text/html');
         response.status(404).send('Error 404 Page introuvable !');
         response.end();
