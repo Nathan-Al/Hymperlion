@@ -11,8 +11,6 @@ exports.Controller = async function Controller() {
 
     let chemin = outilLectureLiens.array_racine[5];
     let iy = chemin.lastIndexOf(".");
-    let Promises = "";
-
     chemin = chemin.substring(iy + 1);
     chemin = chemin.replace("/", "");
 
