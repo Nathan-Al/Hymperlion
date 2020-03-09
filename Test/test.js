@@ -21,7 +21,7 @@ function start() {
     if (H)
         console.log("Ok Site créer")*/
 
-    T = test2.CopierDossier(site + "MamaSita", site + "copierA");
+    T = test2.CopierDossier(site + "MamaSita/", site + "copierA");
     //x = test2.CopyFiles(site+"MamaSita/SS.php",site + "copierA");
     //v = test2.CreateDir(site + "copierA/","Rita");
 }
