@@ -241,13 +241,14 @@ exports.CopierDossier = async function CopyDir(chemin, destination) {
                                 } 
                         */
 
-                        async function Leaddir(path) {
+                        async function Leaddir(path,index) {
                             console.log("Leaddir : Path : " + path);
                             let data = undefined;
                             let AraAra = [];
                             let namepath = undefined;
                             let fichiers = undefined;
                             let dossiers = undefined;
+                            let nb_dos = undefined;
                             /*let AraAra = [path+"/"][path.substring(path.lastIndexOf("/") + 1).replace("/", "")]*/
                             ;
                             if (path.slice(-1) != "/")
@@ -261,6 +262,7 @@ exports.CopierDossier = async function CopyDir(chemin, destination) {
                             }
                             try {
                                 dossiers = data.filter(element => element.indexOf(".") === -1);
+                                nb_dos =  dossiers.length;
                             } catch (error) {
                                 console.log("Leaddir ERROR :" + error);
                             }
@@ -269,7 +271,7 @@ exports.CopierDossier = async function CopyDir(chemin, destination) {
                             } catch (error) {
                                 console.log("Leaddir ERROR :" + error);
                             }
-                            ArrayRetur = { "path": namepath, "dossier": dossiers, "fichier": fichiers };
+                            ArrayRetur = { "index":index, "path": namepath, "nb_dos": nb_dos, "dossier": dossiers, "fichier": fichiers };
 
 
                             // Tableaux : AraAra : Renvoie ["Chemin du dossier",Array avec contenue dossier]
@@ -280,13 +282,12 @@ exports.CopierDossier = async function CopyDir(chemin, destination) {
 
 
                         let nameDoc = chemin.substring(chemin.lastIndexOf("/") + 1).replace("/", "");
-                        let Racine = [await Leaddir(chemin)];
+                        let Racine = [await Leaddir(chemin,0)];
                         let fichiers = undefined;
                         let dossier = undefined;
                         /*let Racine = [];
                         Racine.push(await Leaddir(chemin));*/
                         Lila(Racine, chemin, 0);
-
 
                         async function Lila(Dossier, path, index) {
                             console.log("Lila :                                    Chemin : " + Dossier[index].path);
@@ -304,12 +305,16 @@ exports.CopierDossier = async function CopyDir(chemin, destination) {
                                     if (path.slice(-1) != "/")
                                         path = path + "/";
 
-                                    await Dossier.push(await Leaddir(path + value));
+                                    await Dossier.push(await Leaddir(path + value,index));
 
-                                    for (let r = 0; r < Dossier.length; r++); {
+                                    for (let r = 0; r < Dossier[index].nb_dos; r++); {
                                         try {
                                             console.log("lila : index - " + index);
+                                            let moke = index+1;
                                             index = index + 1;
+                                            if(index<moke || index>moke);
+                                            console.log("__________________ALERT INDEX EST MAL INDEX _______________")
+                                            
                                             Lila(Dossier, Dossier[index].path, index);
                                         } catch (er) {
                                             console.log("Lila ERROR : " + er)
