@@ -1,5 +1,7 @@
 let fs = require('fs')
 let fsPromises = require('fs').promises;
+const child_proc = require('child_process');
+const os = require('os');
 
 exports.ScanDossier = async function ScanDosier(liensDossier, extensions) {
     //La valeurs extensions ne peut être que true ou false, elle détermine si les fichier && les dossier doivent être lister
@@ -30,23 +32,51 @@ exports.LireFichier = function LireFichier($fichier) {
     infoFichier = fs.readFile();
 }
 
-exports.CopyFile = CopyFile = (chemin, destination) => {
+exports.CopyFiles = async function CopyFiles(path, destination) {
+    //console.log("path : "+path+" destination : "+destination)
+    // Fonction de copy de fichiers il faut pour cela que : path = dossier/fichier.ext : & : destination = dossier/fichiers.ext :
+    let nomdoc = path.substring(path.lastIndexOf("/") + 1).replace("/", "")
+    fs.stat(path, (err, stat) => {
 
-    fs.stat(chemin, (err, stat) => {
-        let total = stat.size
-        let progress = 0
-        let read = fs.createReadStream(chemin)
-        let write = fs.createWriteStream(destination)
+        if (err) {
+            console.log("Erreur to stat : " + err);
+            throw err;
+        } else {
+            let total = stat.size
+            let progress = 0
+            let read = fs.createReadStream(path)
+            let write = fs.createWriteStream(destination + "/" + nomdoc)
 
-        read.on('data', (chunk) => {
-            progress += chunk.length
-            console.log(Math.round(100 * progress / total) + "%")
-        })
+            read.on('data', (chunk) => {
+                progress += chunk.length
+                console.log(Math.round(100 * progress / total) + "%")
+            }).on('error', (error) => {
+                console.log("Erreur to read on data :: " + error);
+                throw error;
+            })
 
-        read.pipe(write)
-        write.on('finish', () => {
-            console.log("Fait")
-        })
+            read.pipe(write).on('error', (error) => {
+                console.log("Erreur to read.pipe :: " + error);
+                throw error;
+            })
 
-    })
+            write.on('finish', () => {
+                console.log("Fait")
+                return true;
+            }).on('error', (error) => {
+                console.log("Erreur to write :: " + error);
+                throw error;
+            })
+        }
+    });
+}
+
+exports.NettoyageCharacters = async function nettoyageCharacters(chaineCarach) {
+    await chaineCarach.replace(
+        'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+        'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+    await chaineCarach.replace('/([^.a-z0-9]+)/i ', '');
+    await chaineCarach.toLowerCase(chaineCarach);
+
+    return chaineCarach;
 }

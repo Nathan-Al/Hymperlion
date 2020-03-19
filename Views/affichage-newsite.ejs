@@ -26,7 +26,8 @@
 </header>
 
 <!-- Importations du css -->
-<form method="post" class="form-1" action ="controll-newsite" ><!-- enctype="multipart/form-data" --> 
+<form method="post" class="form-1" action="controll-newsite">
+    <!-- enctype="multipart/form-data" -->
 
     <body>
         <div class="conteneur-1" id="conteneur-1">
@@ -40,7 +41,7 @@
 
                     <p id="warning_p" class="warning_p"></p>
                     Utiliser un thème ?
-                    <input type="checkbox" name="site[use_theme]" id="site[use_theme]" value="true" checked> Utiliser le thème default
+                    <input type="checkbox" name="site[use_theme]" id="site[use_theme]" value="false" checked> Utiliser le thème default
                     <input type="radio" name="site[theme]" id="site[theme]" value="default" checked>
                     </p>
 
@@ -76,9 +77,9 @@
                                 <input type="radio" name="theme" value="<%= element %>">
                             </div>
                         </div>
-                        
-                        <%    }); %> 
-                            
+
+                        <%    }); %>
+
                 </div>
             </div>
         </div>

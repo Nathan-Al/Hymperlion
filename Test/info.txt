@@ -1,0 +1,149 @@
+    /* 
+        Extraire nom du fichier ou du dossier de  : chemin : grâce a méthode lastIndexof & substring
+
+        vérifier que : destination : n'existe pas si il existe vérifier qu'il est vide ou non
+
+        si : chemin : pointe sur dossier faire 
+        {
+            Racine =  aborescence totale du dossier(chemin)
+                        function aborescence totale du dossier(chemin)
+                        {
+                            ArrayDirComp = Leaddir(chemin);
+
+                            Fichiers = ArrayDirComp.filter(si : . : a la fin)
+                            Dossier = ArrayDirComp.filter (si : . : pas la fin)
+                            let Directory = [];
+
+                            Logique Array Sauvegarder path des fichiers et des dossier :
+                                Directory = { 
+                                    Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
+                                    Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
+                                    Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
+                                    Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
+                                }
+                        }
+
+            Si dossier est créer 
+            - copier fichier dans dossier principale
+            - créer dossier dans dossier principale
+            - copier fichier dans chaque dossier créer dossier dans chaque dossier etc....
+        }else
+        {
+            fonction de copy de fichiers simple.
+        }
+        
+    */
+
+    /*
+                            function aborescence totale du dossier(chemin)
+                                {
+                                    ArrayDirComp = Leaddir(chemin);
+
+                                    Fichiers = ArrayDirComp.filter(si : . : a la fin)
+                                    Dossier = ArrayDirComp.filter (si : . : pas la fin)
+                                    let Directory = [];
+
+                                    Logique Array Sauvegarder path des fichiers et des dossier :
+                                        Tant que dossier existe :
+                                        Directory.push = Leaddir(chemin dossier)
+                                            Leaddir (chemin du dossier )
+                                            {
+                                                Array[0] = nom dossier
+                                                Array.push(fsPromises.readdir(path));
+                                                exemple Array dans Direcotry :
+                                                Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
+                                                Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
+                                                Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
+                                                Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
+                                            }
+
+                                        
+                                } 
+                        */
+
+                                                //RT(chemin,nameDoc,Racine,1,aRRay=[]);
+                        async function RT(path, name, arrayDossier, Index, NameDir) {
+                            console.log(" ", "Array Dossier : " + arrayDossier + " Index : " + Index)
+                            if (arrayDossier[0] != undefined) {
+                                // Créer Dossier racine
+                                //await CreateDir(destination,name);
+                                // Récupérer informations dans la racine
+
+                                // Copier les fichiers dans la racine
+                                console.log("Array : " + arrayDossier[Index] + " ou " + arrayDossier[0][0])
+
+                                try {
+                                    fichiers = arrayDossier[Index].filter(element => element.indexOf(".") > -1);
+                                } catch (error) {
+                                    console.log(error);
+                                }
+
+                                try {
+                                    dossier = arrayDossier[Index].filter(element => element.indexOf(".") === -1);
+                                } catch (error) {
+                                    console.log(error);
+                                }
+
+                                fichiers.forEach(async function(value, index) {
+                                    //let OkCopdir = await CopyFiles(path+"/"+value,destination+"/"+name)
+                                })
+
+                                dossier.forEach(async function(value, index) {
+                                    //let OkCreat = await CreateDir(destination+"/"+arrayDossier[0],value)
+                                })
+
+                                /*if(OkCopdir==true && OkCreat== true)
+                                {*/
+                                //let NameDir=[];
+                                dossier.forEach(function(value, index) {
+                                    NameDir[index] = value;
+                                });
+
+                                NameDir.forEach(async function(value, index) {
+                                    //arrayDossier.push(await Leaddir(chemin+"/"+value)) ;
+                                    let MAMA = await Leaddir(chemin + "/" + value)
+                                    MAMA.forEach(function(value, index) {
+                                            arrayDossier.push(value);
+                                        })
+                                        //arrayDossier[index] = await Leaddir(chemin+"/"+value);
+                                        //console.log("Array    :   "+arrayDossier);
+                                    let V = arrayDossier[Index + 1];
+                                    RT(V, value, arrayDossier, Index + 2, NameDir)
+                                });
+
+                                //RT()
+                                //}
+                            }
+                        }
+
+                        
+    /*    await Dossier.forEach(function(value, index) {
+            fs.readdir(chemin + "/" + value, function(err, files) {
+                if (err != undefined) {
+                    throw (err);
+                } else {
+                    Fichiers.push(files)
+                }
+            });
+        })
+
+            fs.stat(chemin, (err, stat) => {
+                let total = stat.size
+                let progress = 0
+                let read = fs.createReadStream(chemin)
+                let write = fs.createWriteStream(destination)
+
+                read.on('data', (chunk) => {
+                    progress += chunk.length
+                    console.log(Math.round(100 * progress / total) + "%")
+                })
+
+                read.pipe(write)
+                write.on('finish', () => {
+                    console.log("Fait")
+                }).on('error', (error) => {
+                    console.log(error);
+                    throw error;
+                })
+
+            })*/

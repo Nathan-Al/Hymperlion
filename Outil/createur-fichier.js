@@ -1,20 +1,22 @@
-let lli = require("../Outil/lecteur-liens.php");
+let lli = require("../Outil/lecteur-liens.js");
 let fs = require("fs");
+const child_proc = require('child_process');
+const os = require('os');
 
-function CreerSite(nom, choix) {
-    require(lli.manager_page_model);
+exports.CreerSite = async function CreerSite(nom, choix, theme) {
+    //require(lli.manager_page_model);
     let racine_site = lli.array_racine[5];
     let fichier = {
         "vue": racine_site + nom + "/Views" + "/" + "view-",
         "controller": racine_site + nom + "/Controller" + "/" + "control-",
-        "css": $racine_site + nom + "/Css" + "/" + "css-"
+        "css": racine_site + nom + "/Css" + "/" + "css-"
     };
     let dossier = ["Views", "Controller", "Css", "Model", "Outil", "Error", "Medias-Site"];
     let ok = 0;
     let do_all_the_work;
 
     if (choix) {
-        if (CreeDossier(racine_site, $nom)) {
+        if (CreeDossier(racine_site, nom)) {
             if (CopierDossier(racine_template +
                     "Default/", racine_site + nom +
                     "/")) {
@@ -28,9 +30,9 @@ function CreerSite(nom, choix) {
         }
 
     } else {
-        if (CreeDossier(racine_site, nom)) {
+        if (await CreeDossier(racine_site, nom)) {
             for (p = 0; p < sizeof(dossier); p++) {
-                if (CreeDossier(racine_site.nom, dossier[p])) {
+                if (await CreeDossier(racine_site.nom, dossier[p])) {
                     ok++;
                 }
             }
@@ -38,9 +40,9 @@ function CreerSite(nom, choix) {
             do_all_the_work = false;
 
         if (ok = 6) {
-            if (CreeFichier(racine_site + nom +
-                    "/", "index.php") && CreeFichier(racine_site + nom +
-                    "/", ".htaccess") && CreePage(fichier, nom))
+            if (await CreeFichier(racine_site + nom +
+                    "/", "index.php") && await CreeFichier(racine_site + nom +
+                    "/", ".htaccess") && await CreePage(fichier, nom))
                 do_all_the_work = true;
         }
     }
@@ -52,28 +54,22 @@ async function CreeDossier(destination, nom) {
     await fs.mkdir(destination + "/" + nom, { recursive: true }, (err) => {
         if (err) return false;
     });
-    /*
-    if (!mkdir(chemin + "/" + nomfichier, 777)) {
-        die('Echec lors de la création des répertoires...');
-        return false;
-    } else {
-        chmod($chemin + "/" + $nomfichier, 0777);
-        return true;
-    }
-*/
 }
 
 function CreePage(destination, nom) {
     if (destination != null && nom != null) {
-        nomfichier = $nom;
-        vue = destination["vue"] + $nom + ".php";
-        controller = destination["controller"] + nom + ".php";
-        css = destination["css"] + nom + ".php";
-        //echo $nomfichier." ".$vue." ".$controller." ".$css." ";
-        if (!file_exists(vue)) {
-            if (!file_exists(controller)) {
-                if (!file_exists(css)) {
+        nomfichier = nom;
+        vue = destination["vue"] + nom + ".ejs";
+        controller = destination["controller"] + nom + ".js";
+        css = destination["css"] + nom + ".css";
+        console.log(nomfichier + " " + vue + " " + controller + " " + css + " ");
+        if (!existsSync(vue)) {
+            if (!existsSync(controller)) {
+                if (!existsSync(css)) {
                     try {
+                        CreeFichier();
+                        CreeFichier();
+                        CreeFichier();
                         fopen(vue, 'wb');
                         fopen(controller, 'wb');
                         fopen(css, 'wb');
@@ -98,7 +94,7 @@ function CreePage(destination, nom) {
 }
 
 function CreeFichier(destination, nom) {
-    if (destination != "" && $nom != "" || destination != null && nom != null) {
+    if (destination != "" && nom != "" || destination != null && nom != null) {
         chemin = destination;
         nomfichier = nom;
 
@@ -114,10 +110,9 @@ function CreeFichier(destination, nom) {
             return false;
         }
     }
-
 }
 
-function SupprimerFichier(destination, nom) {
+async function SupprimerFichier(destination, nom) {
     if (destination != null && $nom != null) {
         nomfichier = nom;
         vue = destination["vue"];
@@ -150,32 +145,49 @@ function SupprimerFichier(destination, nom) {
     }
 }
 
-function CopierDossier(dir2copy, dir_paste) {
-    // On vérifie si $dir2copy est un dossier
-    if (is_dir(dir2copy)) {
-
-        // Si oui, on l'ouvre
-        if (dh = opendir(dir2copy)) {
-            // On liste les dossiers et fichiers de $dir2copy
-            while ((file = readdir(dh)) !== false) {
-                // Si le dossier dans lequel on veut coller n'existe pas, on le créé
-                if (!is_dir(dir_paste)) mkdir(dir_paste, 0777)
-
-                // S'il s'agit d'un dossier, on relance la fonction rÃ©cursive
-                if (is_dir(dir2copy + file) && file != '..' && file != '.') CopierDossier(dir2copy + file + '/', dir_paste + file + '/')
-                    // S'il sagit d'un fichier, on le copie simplement
-                elseif(file != '..' && file != '.') {
-                    copy(dir2copy + file, dir_paste + file);
-                    chmod(dir_paste + file, 0777);
-                }
-
+async function CopyDir(chemin, destination) {
+    if (chemin.indexOf(".") === -1) {
+        await fs.stat(chemin, async function(err, stat) {
+            if (err)
+                throw err;
+            else if (stat) {
+                await fs.stat(destination, async function(err, stat) {
+                    if (stat) {
+                        if (os.platform() == "win32") {
+                            try {
+                                chemin = chemin.replace("/", "\\");
+                                destination = destination.replace("/", "\\");
+                                let nameDoc = chemin.substring(chemin.lastIndexOf("\\") + 1).replace("\\", "");
+                                await CreateDir(destination, nameDoc);
+                                child_proc.exec('xcopy /e ' + chemin + " " + destination + "\\" + nameDoc, (err, stdout, stderr) => {
+                                    if (err) console.log(err);
+                                });
+                            } catch (err) {
+                                console.log(err);
+                            }
+                        } else if (os.platform() == "linux") {
+                            try {
+                                chemin = chemin.replace("\\", "/");
+                                destination = destination.replace("\\", "/");
+                                let nameDoc = chemin.substring(chemin.lastIndexOf("/") + 1).replace("/", "");
+                                await CreateDir(destination, nameDoc);
+                                child_proc.exec('cp -r ' + chemin + " " + destination + "/" + nameDoc, (err, stdout, stderr) => {
+                                    if (err) console.log(err);
+                                });
+                            } catch (err) {
+                                console.log(err)
+                            }
+                        }
+                    } else if (err) {
+                        throw err;
+                    }
+                })
             }
-
-            // On ferme $dir2copy
-            closedir(dh);
-            return true;
-        }
-
-    } else
-        return false;
+        })
+    }
 }
+
+exports.CopierDossier = CopyDir;
+exports.CopyDir = CopyDir;
+exports.Supp_Files = SupprimerFichier;
+exports.CreeDossier = CreeDossier;

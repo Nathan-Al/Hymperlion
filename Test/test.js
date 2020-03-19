@@ -1,4 +1,6 @@
 let test2 = require("./test2");
+let Path = require("path");
+let os = require('os');
 let y = "Site";
 let G = "";
 let site = "Test/";
@@ -21,7 +23,7 @@ function start() {
     if (H)
         console.log("Ok Site créer")*/
 
-    T = test2.CopierDossier(site + "MamaSita/", site + "copierA");
+    T = test2.CopierDossier(site + "MamaSit", site + "copierA");
     //x = test2.CopyFiles(site+"MamaSita/SS.php",site + "copierA");
     //v = test2.CreateDir(site + "copierA/","Rita");
 }

@@ -1,6 +1,9 @@
 let fs = require('fs')
 let fsPromises = require('fs').promises;
 let Path = require("path");
+const child_proc = require('child_process');
+const os = require('os');
+
 //var ncp = require('ncp').ncp;
 //ncp.limit = 16;
 
@@ -169,260 +172,45 @@ exports.CreeFichier = function CreeFichier(destination, nom) {
 }
 
 exports.CopierDossier = async function CopyDir(chemin, destination) {
-    console.log(Path.join(__dirname, chemin));
-    /* 
-        Extraire nom du fichier ou du dossier de  : chemin : grâce a méthode lastIndexof & substring
-
-        vérifier que : destination : n'existe pas si il existe vérifier qu'il est vide ou non
-
-        si : chemin : pointe sur dossier faire 
-        {
-            Racine =  aborescence totale du dossier(chemin)
-                        function aborescence totale du dossier(chemin)
-                        {
-                            ArrayDirComp = Leaddir(chemin);
-
-                            Fichiers = ArrayDirComp.filter(si : . : a la fin)
-                            Dossier = ArrayDirComp.filter (si : . : pas la fin)
-                            let Directory = [];
-
-                            Logique Array Sauvegarder path des fichiers et des dossier :
-                                Directory = { 
-                                    Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
-                                    Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
-                                    Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
-                                    Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
-                                }
-                        }
-
-            Si dossier est créer 
-            - copier fichier dans dossier principale
-            - créer dossier dans dossier principale
-            - copier fichier dans chaque dossier créer dossier dans chaque dossier etc....
-        }else
-        {
-            fonction de copy de fichiers simple.
-        }
-        
-    */
-
-
     if (chemin.indexOf(".") === -1) {
         await fs.stat(chemin, async function(err, stat) {
             if (err)
-                throw err
+                throw err;
             else if (stat) {
                 await fs.stat(destination, async function(err, stat) {
                     if (stat) {
-                        /*
-                            function aborescence totale du dossier(chemin)
-                                {
-                                    ArrayDirComp = Leaddir(chemin);
-
-                                    Fichiers = ArrayDirComp.filter(si : . : a la fin)
-                                    Dossier = ArrayDirComp.filter (si : . : pas la fin)
-                                    let Directory = [];
-
-                                    Logique Array Sauvegarder path des fichiers et des dossier :
-                                        Tant que dossier existe :
-                                        Directory.push = Leaddir(chemin dossier)
-                                            Leaddir (chemin du dossier )
-                                            {
-                                                Array[0] = nom dossier
-                                                Array.push(fsPromises.readdir(path));
-                                                exemple Array dans Direcotry :
-                                                Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
-                                                Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
-                                                Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
-                                                Array [Dossier , fichiers 1 , fichiers 2 , fichiers 3 , etc....],
-                                            }
-
-                                        
-                                } 
-                        */
-
-                        async function Leaddir(path,index) {
-                            console.log("Leaddir : Path : " + path);
-                            let data = undefined;
-                            let AraAra = [];
-                            let namepath = undefined;
-                            let fichiers = undefined;
-                            let dossiers = undefined;
-                            let nb_dos = undefined;
-                            /*let AraAra = [path+"/"][path.substring(path.lastIndexOf("/") + 1).replace("/", "")]*/
-                            ;
-                            if (path.slice(-1) != "/")
-                                namepath = path + "/";
-                            else
-                                namepath = path;
+                        if (os.platform() == "win32") {
                             try {
-                                data = await fsPromises.readdir(path);
-                            } catch (error) {
-                                console.log("Leaddir ERROR : " + error)
-                            }
-                            try {
-                                dossiers = data.filter(element => element.indexOf(".") === -1);
-                                nb_dos =  dossiers.length;
-                            } catch (error) {
-                                console.log("Leaddir ERROR :" + error);
-                            }
-                            try {
-                                fichiers = data.filter(element => element.indexOf(".") > -1);
-                            } catch (error) {
-                                console.log("Leaddir ERROR :" + error);
-                            }
-                            ArrayRetur = { "index":index, "path": namepath, "nb_dos": nb_dos, "dossier": dossiers, "fichier": fichiers };
-
-
-                            // Tableaux : AraAra : Renvoie ["Chemin du dossier",Array avec contenue dossier]
-                            return ArrayRetur;
-
-                        }
-
-
-
-                        let nameDoc = chemin.substring(chemin.lastIndexOf("/") + 1).replace("/", "");
-                        let Racine = [await Leaddir(chemin,0)];
-                        let fichiers = undefined;
-                        let dossier = undefined;
-                        /*let Racine = [];
-                        Racine.push(await Leaddir(chemin));*/
-                        Lila(Racine, chemin, 0);
-
-                        async function Lila(Dossier, path, index) {
-                            console.log("Lila :                                    Chemin : " + Dossier[index].path);
-                            console.log("Lila :                                    Dossier : " + Dossier[index].dossier);
-                            console.log("Lila :                                    Index : " + index);
-                            let i = 1;
-                            await Dossier[index].dossier.forEach(async function(value) {
-
-                                console.log("Lila :                                    PASSAGE : " + i++);
-
-                                if (value.indexOf(".") === -1) {
-
-                                    console.log("lila : Path " + path + value);
-
-                                    if (path.slice(-1) != "/")
-                                        path = path + "/";
-
-                                    await Dossier.push(await Leaddir(path + value,index));
-
-                                    for (let r = 0; r < Dossier[index].nb_dos; r++); {
-                                        try {
-                                            console.log("lila : index - " + index);
-                                            let moke = index+1;
-                                            index = index + 1;
-                                            if(index<moke || index>moke);
-                                            console.log("__________________ALERT INDEX EST MAL INDEX _______________")
-                                            
-                                            Lila(Dossier, Dossier[index].path, index);
-                                        } catch (er) {
-                                            console.log("Lila ERROR : " + er)
-                                        }
-                                    }
-
-                                } else {
-                                    console.log("Lila : Pas de dossier")
-                                }
-                            });
-
-                        };
-
-                        //RT(chemin,nameDoc,Racine,1,aRRay=[]);
-                        async function RT(path, name, arrayDossier, Index, NameDir) {
-                            console.log(" ", "Array Dossier : " + arrayDossier + " Index : " + Index)
-                            if (arrayDossier[0] != undefined) {
-                                // Créer Dossier racine
-                                //await CreateDir(destination,name);
-                                // Récupérer informations dans la racine
-
-                                // Copier les fichiers dans la racine
-                                console.log("Array : " + arrayDossier[Index] + " ou " + arrayDossier[0][0])
-
-                                try {
-                                    fichiers = arrayDossier[Index].filter(element => element.indexOf(".") > -1);
-                                } catch (error) {
-                                    console.log(error);
-                                }
-
-                                try {
-                                    dossier = arrayDossier[Index].filter(element => element.indexOf(".") === -1);
-                                } catch (error) {
-                                    console.log(error);
-                                }
-
-                                fichiers.forEach(async function(value, index) {
-                                    //let OkCopdir = await CopyFiles(path+"/"+value,destination+"/"+name)
-                                })
-
-                                dossier.forEach(async function(value, index) {
-                                    //let OkCreat = await CreateDir(destination+"/"+arrayDossier[0],value)
-                                })
-
-                                /*if(OkCopdir==true && OkCreat== true)
-                                {*/
-                                //let NameDir=[];
-                                dossier.forEach(function(value, index) {
-                                    NameDir[index] = value;
+                                chemin = chemin.replace("/", "\\");
+                                destination = destination.replace("/", "\\");
+                                let nameDoc = chemin.substring(chemin.lastIndexOf("\\") + 1).replace("\\", "");
+                                await CreateDir(destination, nameDoc);
+                                child_proc.exec('xcopy /e ' + chemin + " " + destination + "\\" + nameDoc, (err, stdout, stderr) => {
+                                    if (err) console.log(err);
                                 });
-
-                                NameDir.forEach(async function(value, index) {
-                                    //arrayDossier.push(await Leaddir(chemin+"/"+value)) ;
-                                    let MAMA = await Leaddir(chemin + "/" + value)
-                                    MAMA.forEach(function(value, index) {
-                                            arrayDossier.push(value);
-                                        })
-                                        //arrayDossier[index] = await Leaddir(chemin+"/"+value);
-                                        //console.log("Array    :   "+arrayDossier);
-                                    let V = arrayDossier[Index + 1];
-                                    RT(V, value, arrayDossier, Index + 2, NameDir)
+                            } catch (err) {
+                                console.log(err);
+                            }
+                        } else if (os.platform() == "linux") {
+                            try {
+                                chemin = chemin.replace("\\", "/");
+                                destination = destination.replace("\\", "/");
+                                let nameDoc = chemin.substring(chemin.lastIndexOf("/") + 1).replace("/", "");
+                                await CreateDir(destination, nameDoc);
+                                child_proc.exec('cp -r ' + chemin + " " + destination + "/" + nameDoc, (err, stdout, stderr) => {
+                                    if (err) console.log(err);
                                 });
-
-                                //RT()
-                                //}
+                            } catch (err) {
+                                console.log(err)
                             }
                         }
-                    } else if (err)
-                        throw err
+                    } else if (err) {
+                        throw err;
+                    }
                 })
             }
         })
-    } else if (chemin.indexOf(".") > -1) {
-        CopyFiles(chemin, destination);
     }
-
-
-    /*    await Dossier.forEach(function(value, index) {
-            fs.readdir(chemin + "/" + value, function(err, files) {
-                if (err != undefined) {
-                    throw (err);
-                } else {
-                    Fichiers.push(files)
-                }
-            });
-        })
-
-            fs.stat(chemin, (err, stat) => {
-                let total = stat.size
-                let progress = 0
-                let read = fs.createReadStream(chemin)
-                let write = fs.createWriteStream(destination)
-
-                read.on('data', (chunk) => {
-                    progress += chunk.length
-                    console.log(Math.round(100 * progress / total) + "%")
-                })
-
-                read.pipe(write)
-                write.on('finish', () => {
-                    console.log("Fait")
-                }).on('error', (error) => {
-                    console.log(error);
-                    throw error;
-                })
-
-            })*/
-
 }
 
 async function CopyFiles(path, destination) {
@@ -470,6 +258,111 @@ async function CreateDir(desti, name) {
         else
             return true;
     });
+}
+
+async function LireDir(chemin, destination) {
+    console.log(Path.join(__dirname, chemin));
+
+    //let nameDoc = chemin.substring(chemin.lastIndexOf("/") + 1).replace("/", "");
+    //let fichiers = undefined;
+    //let dossier = undefined;
+    //let index = 0;
+
+    //let Racine = [await Leaddir(chemin, 0)];
+
+    //Lila(Racine, chemin, 0);
+    if (chemin.indexOf(".") === -1) {
+        await fs.stat(chemin, async function(err, stat) {
+            if (err)
+                throw err
+            else if (stat) {
+                await fs.stat(destination, async function(err, stat) {
+                    if (stat) {
+
+                        async function Lila(Dossier, path, index) {
+                            console.log("Lila 1 :                                    Chemin : " + path);
+                            console.log("Lila 2 :                                    Dossier : " + Dossier[index].dossier);
+                            console.log("Lila 3 :                                    Index : " + index);
+                            let i = 1;
+                            Dossier[index].dossier.forEach(async function(value, nb_boucle) {
+
+                                console.log("Lila 4 :                                    PASSAGE : " + nb_boucle);
+
+                                if (value.indexOf(".") === -1) {
+
+                                    console.log("lila 5 : Path                             " + path + value);
+
+                                    if (path.slice(-1) != "/")
+                                        path = path + "/";
+
+                                    Dossier.push(await Leaddir(path + value, await index + 1));
+
+                                    for (let r = 0; r < Dossier[index].nb_dos; r++); {
+                                        try {
+                                            console.log("lila 6 :                           index - " + index);
+
+                                            index = index + 1;
+
+                                            console.log("__________________       " + index + "         _______________")
+
+                                            Lila(Dossier, Dossier[index].path, index);
+
+                                        } catch (er) {
+                                            console.log("Lila ERROR : " + er)
+                                        }
+                                    }
+
+                                } else {
+                                    console.log("Lila : Pas de dossier")
+                                }
+                            });
+
+                        };
+                    } else if (err)
+                        throw err
+                })
+            }
+        })
+    } else if (chemin.indexOf(".") > -1) {
+        CopyFiles(chemin, destination);
+    }
+
+    async function Leaddir(path, index) {
+        console.log("Leaddir 1 :                          Path : " + path);
+        let data = undefined;
+
+        let namepath = undefined;
+        let fichiers = undefined;
+        let dossiers = undefined;
+        let nb_dos = undefined;
+
+        ;
+        if (path.slice(-1) != "/")
+            namepath = path + "/";
+        else
+            namepath = path;
+        try {
+            data = await fsPromises.readdir(path);
+        } catch (error) {
+            console.log("Leaddir ERROR : " + error)
+        }
+        try {
+            dossiers = data.filter(element => element.indexOf(".") === -1);
+            nb_dos = dossiers.length;
+        } catch (error) {
+            console.log("Leaddir ERROR :" + error);
+        }
+        try {
+            fichiers = data.filter(element => element.indexOf(".") > -1);
+        } catch (error) {
+            console.log("Leaddir ERROR :" + error);
+        }
+        ArrayRetur = { "index": index, "path": namepath, "nb_dos": nb_dos, "dossier": dossiers, "fichier": fichiers };
+
+
+        // Tableaux : AraAra : Renvoie ["Chemin du dossier",Array avec contenue dossier]
+        return ArrayRetur;
+    }
 }
 
 exports.CopyFiles = CopyFiles;

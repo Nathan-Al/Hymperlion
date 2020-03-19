@@ -6,37 +6,40 @@ let createur_fichier = require(outilLectureLiens.outil_createur_fichier);
 exports.Controller = async function Controller(body) {
     if (body != undefined) {
 
-        let fichiers = [];
-        fichiers = str_replace("affichage-", "", ScanFichiers(racine_views));
         let fichier_cree;
         let nom = body.site.name;
-        let themedefault = body.site.use_theme;
+        let use_theme_default = body.site.use_theme;
         let theme = body.site.theme;
 
-        if (nom) {
-            if (themedefault == true) {
+        if (nom != undefined) {
+            if (use_theme_default == true) {
                 if (theme) {
                     if (theme == "default")
-                        themedefault = true;
+                        LA(nom, true, "default");
                     else {
-                        themedefault = false;
+                        LA(nom, true, theme);
                     }
                 }
+            } else {
+                LA(nom, false);
             }
         } else {
-            themedefault = false;
+            console.error("Nom est undefined ou incorrect");
         }
+        async function LA(nom, useTheme, Theme) {
+            if (nom != "" && nom != null) {
+                let Nom = await outilLecteurFichier.NettoyageCharacters(nom);
 
-        if (nom != "" && nom != null) {
-            let Nom = nettoyageCharacters(nom);
-
-            if (createur_fichier.CreerSite(Nom, themedefault)) {
-                //echo "<meta http-equiv='refresh' content='0; URL=controll-menu.php'>";
-            } else {
-                fichier_cree = false;
+                if (createur_fichier.CreerSite(Nom, useTheme, Theme)) {
+                    //echo "<meta http-equiv='refresh' content='0; URL=controll-menu.php'>";
+                } else {
+                    fichier_cree = false;
+                }
             }
         }
 
+
+        return fichier_cree;
 
     } else {
         var fonctionController = [];
