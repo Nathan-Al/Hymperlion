@@ -1,81 +1,32 @@
-
-<html>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
 <meta charset="UTF-8">
 <LINK rel="icon" type="image/png" href="icone.jpg">
 <!-- Icone de l onglet de la page web -->
 
-<link type="text/css" rel="stylesheet" href='style-newsite.css'>
+<link type="text/css" rel="stylesheet" href='test.css'>
 
-<head>
-    <title>
-       
-    </title>
-    <!-- Titre de l onglet de la page web -->
-</head>
 <header>
     <div class="div-header-nom">
         <a href="../" class="a-headers">
-            <h1> Hymperlion </h1>
+            <h1 id="titre"> Hymperlion </h1>
         </a>
-    </div>
-    <div class="div-header-nom-site">
-        <h1 class="h1-nomsite">
-            
-        </h1>
     </div>
 </header>
 
 <!-- Importations du css -->
-<form method="POST" class="form-1" action ="/" >
 
-    <body>
-        <div class="conteneur-1" id="conteneur-1">
-            <div class="div-1">
-                <div class="div-2">
-                    <h1 class="h1-a">Créer un nouveaux Site : </h1>
-                    <label for="nomfichier">Nom du site : </label>
-                    <input id="nomfichier" type="text" name="site[name]" id="site[name]" pattern="[aA-zZ]{1,10}" required>
-
-                    <input type="submit" id="buttonSubmit" name="create">
-
-                    <p id="warning_p" class="warning_p"></p>
-                    Utiliser un thème ?
-                    <input type="checkbox" name="site[use_theme]" id="site[use_theme]" value="true" checked> Utiliser le thème default
-                    <input type="radio" name="site[theme]" id="site[theme]" value="default" checked>
-                    </p>
-
-                    <p>Eviter de mettre qu'elle que chose de stupide :-)</p>
-                </div>
-
-                <div class="div-3">
-                    
-                        <div class="affichage-div-image">
-                            <div class="min-affichage-div-image">
-                                <a class="a-image" href="">
-                                    <div class="a-image-background">
-                                        <!-- Background nom image (apparait en hover) -->
-                                    </div>
-                                </a>
-
-                                <div class="div-image">
-                                    <img class="Min-Image" src="default.png " />
-                                </div>
-                            </div>
-
-                            <div class="div-affichage-image-gestion">
-                                <p class="p-div-affichage-image-gestion">
-                                    
-                                </p>
-                                <input type="radio" name="theme" value="">
-                            </div>
-                        </div>
-                         
-                </div>
+<body>
+    <form method="POST" class="form-1" action="/">
+        <div class="div-1">
+            <div class="div-text">
+                <textarea class="textarea-editeur-code" id="code" name="code_ecrit" spellcheck="false" data-language="javascript"><%=info %></textarea>
+            </div>
+            <!-- Commentaire pour séparer les deux -->
+            <div class=" div-listcode ">
+                <input type="submit" value="Envoyer le formulaire">
             </div>
         </div>
-        <script type="text/javascript" src="script-newsite"></script>
-    </body>
-</form>
-
-</html>
+        <script type="text/javascript " src="jquery-3.5.0.js "></script>
+        <script type="text/javascript " src="script-editeur.js "></script>
+    </form>
+</body>

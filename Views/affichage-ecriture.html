@@ -2,11 +2,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href=<?php echo $liens_css_editeur ?>>
+<link rel="stylesheet" href="Css/style-editeurs.css">
 <!-- Importations du css -->
 
 <body>
-    <form method="post" class="form-1" action=<?php echo $controller_editeur ?> enctype="multipart/form-data">
+    <form method="post" class="form-1" action="../Controller/controll" enctype="multipart/form-data">
         <div class="div-1">
             <div class="div-text">
                 <textarea class="textarea-editeur-code" id="code" name="code-ecrit" spellcheck="false"><?php for($r=0;$r<sizeof($InfoFichier);$r++) { echo $InfoFichier[$r]; } ?></textarea>

@@ -40,6 +40,7 @@ exports.manager_page_model = racine_manager + "Manager-Page-Web-Model.js";
 exports.outil_lecteur_fichier = racine_outil + "lecteur-fichier.js";
 exports.outil_editeur_fichier = racine_outil + "editeur-fichier.js";
 exports.outil_createur_fichier = racine_outil + "createur-fichier.js";
+exports.outil_normalisations = racine_outil + "normalisations.js"
 
 //CONTROLLER
 exports.array_controller = [

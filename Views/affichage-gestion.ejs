@@ -1,53 +1,66 @@
 <html>
-<?php
-        require $require_html_header;
-        require $require_html_footer;
-        //require $require_html_body;
-        Headers($IconeSite, $cssheader,$titre_page,$nom_site, $choix);
-    ?>
-    <script src="jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href='style-body.css'>
-    <!-- Importations du css -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<LINK rel="icon" type="image/png" href='icone.jpg' />
+<!-- Icone de l onglet de la page web -->
 
-    <body class="body">
-        <div class="conteneur-0">
-            <div class="conteneur-1" id="conteneur-1">
-                <div class="div-option">
+<link type="text/css" rel="stylesheet" href='style-gestion.css' media="all">
+<!-- Importations du css -->
 
-                    <button class="button-gesSite" id="button-gestPage">Gestion des Pages</button>
+<head>
+    <title>
+        <%=Controller.titre_page%>
+    </title>
+    <!-- Titre de l onglet de la page web -->
+</head>
 
-                    <button class="button-gesSite" id="button-gestContr">Gestion des Controllers</button>
+<header>
+    <div class="div-header-nom">
+        <h1>
+            <%=Controller.nom_site%>
+        </h1>
+    </div>
+</header>
+<!-- Importations du css -->
 
-                    <button class="button-gesSite" id="button-gestScript"> Gestion des script</button>
+<body class="body">
+    <div class="conteneur-0">
+        <div class="conteneur-1" id="conteneur-1">
+            <div class="div-option">
 
-                    <button class="button-gesSite" id="button-para">Paramètres</button>
+                <button class="button-gesSite" id="button-gestPage">Gestion des Pages</button>
 
-                </div>
+                <button class="button-gesSite" id="button-gestContr">Gestion des Controllers</button>
 
-            </div>
-            <!------ ------------------------------------------------------------- --->
-            <div class="conteneur-2" id="conteneur-2">
-                <div class="div-1" id="listigue-boutton">
+                <button class="button-gesSite" id="button-gestScript"> Gestion des script</button>
 
-                </div>
-                <div class="div-affichage-action" id="div-affichage-action">
+                <button class="button-gesSite" id="button-para">Paramètres</button>
 
-                    <div class="div-2" id="">
-                        <div class="div-3" id="">
-                            <div class="" id="">
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
-    </body>
-    <?php
-        //Body($cssbody,$choix);
-        Footer($cssfooter,$choix);
-    ?>
-        <script type="module" src="<?php echo $scrip_gestion_site?>"></script>
+        <!------ ------------------------------------------------------------- --->
+        <div class="conteneur-2" id="conteneur-2">
+            <div class="div-affichage-action" id="div-affichage-action">
+                <% 
+                    Controller.Pages_Site.forEach((element, index) => {
+                %>
+                    <p class="button-nomSite" id="nom_site">
+                        <%= element.nom %>
+                    </p>
+                    <%});%>
+            </div>
+            <div class="div-affichage-info" id="div-affichage-info">
+                <p>Nom fichier : </p>
+                <p>Type de fichier :</p>
+                <button type="submit" id="editer_page">Editer Page</button>
+            </div>
+        </div>
+    </div>
+
+    </input>
+</body>
 
 </html>
+
+<script src="script-gestion.js"></script>

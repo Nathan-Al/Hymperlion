@@ -42,6 +42,12 @@ function start(port) {
             console.log("Serveur post : " + " nbreq:" + nbreq);
             routeur.router(request, response, pathname, nbreq++);
         });
+
+        function handleRedirect(req, res) {
+            const targetUrl = targetBaseUrl + req.originalUrl;
+            res.redirect(targetUrl);
+        }
+
         next();
     })
 

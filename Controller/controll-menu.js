@@ -1,6 +1,7 @@
-let outilLectureLiens = require("../Outil/lecteur-liens.js");
-let gestReq = require(outilLectureLiens.script_gestion_requete);
-let outilLecteurFichier = require(outilLectureLiens.outil_lecteur_fichier);
+let Tools_Lecteur_Liens = require("../Outil/lecteur-liens.js");
+let gestReq = require(Tools_Lecteur_Liens.script_gestion_requete);
+let Tools_Lecteur_Fichier = require("../Outil/lecteur-fichier.js" /*Tools_Lecteur_Liens.outil_lecteur_fichier*/ );
+
 
 // exports.controller = function controller() {
 exports.Controller = async function Controller() {
@@ -9,16 +10,16 @@ exports.Controller = async function Controller() {
 
     let website_list = [];
 
-    let chemin = outilLectureLiens.array_racine[5];
+    let chemin = Tools_Lecteur_Liens.array_racine[5];
     let iy = chemin.lastIndexOf(".");
     chemin = chemin.substring(iy + 1);
     chemin = chemin.replace("/", "");
 
-    fonctionController.Views = outilLectureLiens.require_vue_menu;
+    fonctionController.Views = Tools_Lecteur_Liens.require_vue_menu;
 
     //const listeSite = new Promise((resolve, reject) => {
 
-    fonctionController.website_list = await outilLecteurFichier.ScanDossier(chemin, false)
+    fonctionController.website_list = await Tools_Lecteur_Fichier.NameSpace_LecteurFichiers.Dossier.ScanDossier(chemin, false)
         /*.then(function(response) {
                 console.log("Webisitelist : " + response);
                 fonctionController.website_list = response;
@@ -29,10 +30,10 @@ exports.Controller = async function Controller() {
     return fonctionController;
 };
 
-/*masaka = outilLecteurFichier.ScanDossier(chemin).then(function(response) {
+/*masaka = Tools_Lecteur_Fichier.ScanDossier(chemin).then(function(response) {
     //console.log("Response : " + response);
     fonctionController.website_list = response;
-    fonctionController.liens = outilLectureLiens;
+    fonctionController.liens = Tools_Lecteur_Liens;
     
     //exports.fonctionController = fonctionController;
 }).catch((e) => {

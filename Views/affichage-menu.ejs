@@ -34,14 +34,12 @@
         <% let website_list = []; 
             website_list = Controller.website_list; 
         %>
-
             <div class="div-2">
                 <%  if(website_list[0]!=null) 
                     {
                         website_list.forEach(function(element, indice) 
                         {
                     %>
-
 
                     <div class="affichage-div-image">
                         <div class="min-affichage-div-image">
@@ -56,6 +54,13 @@
                                 <img class="Min-Image" src="default.png" />
                             </div>
                         </div>
+
+                        <script type="text/javascript" language="javascript">
+                            function Go() {
+                                document.monForm.submit();
+                            }
+                        </script>
+
 
                         <div class="div-affichage-image-gestion">
                             <a class="a-div-affichage-image-gestion" href="controll-gestion.js?nom_site=<%= element %>">Gestion du site</a>
