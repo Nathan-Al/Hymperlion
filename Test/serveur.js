@@ -28,7 +28,7 @@ function start(port) {
 
         app.set("Views")
         app.set('view engine', 'ejs')
-        app.set('views', path.join(__dirname, '/views'));
+        app.set('views', "Editeur/Views" /*path.join(__dirname, '/views')*/ );
 
         app.use(express.static("Css" /*lli.array_racine[2]*/ ));
         app.use(express.static("media-site"));
@@ -41,7 +41,7 @@ function start(port) {
 
         app.get("*", async function(request, response) {
             //console.log("Serveur pathname : " + pathname + " nbreq:" + nbreq);
-            let doc = await test2.NameSpace_Test.Fichier.lire("Test/doc.js")
+            //let doc = await test2.NameSpace_Test.Fichier.lire("Test/doc.js")
 
             if (doc.__proto__.name == "Error") {
                 alert(doc)

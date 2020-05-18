@@ -7,8 +7,8 @@ let G = "";
 let site = "Test/";
 
 
-start();
-//serv.start(1223);
+//start();
+serv.start(1223);
 
 
 function start() {
@@ -26,7 +26,7 @@ function start() {
         console.log("Ok Site créer")*/
     //L = test2.EcrireDansFichiers(site + "test.php", "MASERAKAN");
     //A = test2.NettoyageCharacters("&:é--(è'/_6*5" + '"' + "'_'>'_<()) \\ ## 0@|?");
-    M = test2.NameSpace_Test.Site.créer("Popo", false, "");
+    //M = test2.NameSpace_Test.Site.créer("Popo", false, "");
     //X = test2.CreeFichier(site+"/copierA","FICHIERCREER",".js");
     //T = test2.CopierDossier(site + "MamaSit", site + "copierA");
     //x = test2.CopyFiles(site+"MamaSita/SS.php",site + "copierA");
