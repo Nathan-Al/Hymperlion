@@ -1,0 +1,13 @@
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\bin\Debug\netcoreapp3.1\TestEditeur.exe
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\bin\Debug\netcoreapp3.1\TestEditeur.deps.json
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\bin\Debug\netcoreapp3.1\TestEditeur.runtimeconfig.json
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\bin\Debug\netcoreapp3.1\TestEditeur.runtimeconfig.dev.json
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\bin\Debug\netcoreapp3.1\TestEditeur.dll
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\bin\Debug\netcoreapp3.1\TestEditeur.pdb
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\obj\Debug\netcoreapp3.1\TestEditeur.csprojAssemblyReference.cache
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\obj\Debug\netcoreapp3.1\TestEditeur.AssemblyInfoInputs.cache
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\obj\Debug\netcoreapp3.1\TestEditeur.AssemblyInfo.cs
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\obj\Debug\netcoreapp3.1\TestEditeur.csproj.CoreCompileInputs.cache
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\obj\Debug\netcoreapp3.1\TestEditeur.dll
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\obj\Debug\netcoreapp3.1\TestEditeur.pdb
+D:\Programmes\wamp64\www\Hymperlion\C#\TestEditeur\obj\Debug\netcoreapp3.1\TestEditeur.genruntimeconfig.cache

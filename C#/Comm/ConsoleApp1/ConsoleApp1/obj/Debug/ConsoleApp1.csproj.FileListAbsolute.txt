@@ -1,0 +1,7 @@
+D:\Programmes\wamp64\www\Hymperlion\C#\Comm\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+D:\Programmes\wamp64\www\Hymperlion\C#\Comm\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+D:\Programmes\wamp64\www\Hymperlion\C#\Comm\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+D:\Programmes\wamp64\www\Hymperlion\C#\Comm\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+D:\Programmes\wamp64\www\Hymperlion\C#\Comm\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\Programmes\wamp64\www\Hymperlion\C#\Comm\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+D:\Programmes\wamp64\www\Hymperlion\C#\Comm\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
