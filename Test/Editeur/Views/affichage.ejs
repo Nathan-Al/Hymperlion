@@ -1,5 +1,4 @@
-<meta http-equiv="Content-Type" content="text/html; charset=iso-10646" />
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-10646" charset="UTF-8" />
 <LINK rel="icon" type="image/png" href="icone.jpg">
 <!-- Icone de l onglet de la page web -->
 
@@ -19,14 +18,18 @@
     <form method="POST" class="form-1" action="/">
         <div class="div-1">
             <div class="div-text">
-                <textarea class="textarea-editeur-code" id="code" name="code_ecrit" spellcheck="false" data-language="javascript"><%=info %></textarea>
+                <div class="div-editeur-code" id="code" name="code_ecrit" spellcheck="false" data-language="javascript">
+                    <%=info.doc[1] %>
+                </div>
             </div>
             <!-- Commentaire pour séparer les deux -->
             <div class=" div-listcode ">
                 <input type="submit" value="Envoyer le formulaire">
             </div>
         </div>
+
         <script type="text/javascript " src="jquery-3.5.0.js "></script>
-        <script type="text/javascript " src="script-editeur.js "></script>
+        <script type="text/javascript" src="lang-javascript.js "></script>
+        <script type="text/javascript" src="script-editeur.js "></script>
     </form>
 </body>

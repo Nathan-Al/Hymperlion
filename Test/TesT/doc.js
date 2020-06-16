@@ -11,4 +11,8 @@ $(document).ready(function() {
     //alert(Jtexte);
 });
 
+let ra = new Array;
+
+ra.forEach(element => console.log(element));
+
 rt

@@ -1,4 +1,4 @@
-let test2 = require("./test2");
+//let test2 = require("./test2");
 let Path = require("path");
 let os = require('os');
 const serv = require("./serveur");
