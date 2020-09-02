@@ -1,7 +1,7 @@
 let gestreq = require("./gestionnaireRequetes");
 var lli = require('../../Outil/lecteur-liens.js');
-let express = require('express');
-let app = express();
+//let express = require('express');
+//let app = express();
 
 let urlValide = false;
 let nomPage = [];
@@ -39,25 +39,31 @@ function router(request, response, pathname, nbreq) {
         }
     });
 
+    /* ROUTE URL VALIDE */
     if (urlValide === true && pathname != "/" && pathname != "/menu" && pathname != "/favicon.ico") {
         console.log("Router : Normal circulation : " + pathname);
         console.log("    ");
 
         gestreq.gestionrequ(request, response, "../" + lli.array_racine[1] + urlPage, data_get, nbreq++);
-    } else if (pathname == "/" || pathname == "/style-menu.css" || pathname == "/default.png" || pathname == "/menu" && pathname != "/favicon.ico" && pathname == "") {
+    } 
+    /* ROUTE URL MENU */
+    else if (pathname == "/" || pathname == "/style-menu.css" || pathname == "/default.png" || pathname == "/menu" && pathname != "/favicon.ico" && pathname == "") {
         console.log("Router : Envoie Menu");
         if (mo = ".css")
             console.log("Router : Css " + mo);
         console.log("Router : Pathname " + pathname);
         //require("../../Controller/controll-menu");
         gestreq.gestionrequ(request, response, "../../Controller/controll-menu", nbreq++);
-
-    } else /*if (urlValide = false || pathname == "/favicon.ico") */ {
+    } 
+    /* ROUTE URL NON VALIDE */
+    else /*if (urlValide = false || pathname == "/favicon.ico") */ {
+        
+        gestreq.gestionrequ(request, response, "../../Controller/controll-404", 0);
+        /*
         response.setHeader('Content-Type', 'text/html');
         response.status(404).send('Error 404 Page introuvable !');
-        response.end();
-        throw new Error('Error 404 ' + pathname + ' introuvable !');
-
+        response.end();*/
+        //throw new Error('Error 404 ' + pathname + ' introuvable !');
     }
 }
 

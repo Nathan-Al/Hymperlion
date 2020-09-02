@@ -1,4 +1,4 @@
-let express = require('express');
+//let express = require('express');
 
 async function gestionnaireRequetes(request, response, pathname, data_get, nbreq) {
     console.log("Gestionnaire de Requête : pathname : " + pathname + " nbreq:" + nbreq);
